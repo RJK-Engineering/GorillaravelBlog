@@ -8,18 +8,10 @@
   <title>Gorilla Blog</title>
 </head>
 <body>
-  <h1 class="text-center mt-5 mb-4">Gorilla Blog</h1>
   <div class="container">
-    <div class="row">
-      <div class="col-auto-md">
-        <div class="card border-0">
-          <nav id="selectCategory" class="nav flex-column">
-            <a id="ALL" class="nav-link category-menu my-1 active">All</a>
-          </nav>
-        </div>
-      </div>
-      <div class="col" id="posts"></div>
-    </div>
+
+  @yield('content')
+
   </div>
 </body>
 </html>
