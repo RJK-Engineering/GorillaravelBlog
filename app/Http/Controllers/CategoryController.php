@@ -25,7 +25,6 @@ class CategoryController extends Controller
             'title' => request('title')
         ]);
 
-        return view('category.index');
-        // return redirect('/');
+        return redirect('/categories');
     }
 }
