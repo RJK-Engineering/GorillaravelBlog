@@ -9,7 +9,7 @@ use App\Comment;
 class CommentController extends Controller
 {
     public function create(Post $post) {
-        
+
         return view('comments.create', compact('post'));
     }
 
@@ -19,6 +19,6 @@ class CommentController extends Controller
             'post_id' => $post->id,
         ]);
 
-        return redirect('/post/' . $post->id);
+        return redirect('/posts/' . $post->id . '#comments');
     }
 }
