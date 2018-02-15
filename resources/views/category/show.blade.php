@@ -1,7 +1,5 @@
-@extends ('blog')
+@extends ('master')
 
-@section('blog_posts')
 <div>
   <p>{{ $category->title }}</p>
 </div>
-@endsection
