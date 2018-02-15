@@ -1,7 +1,4 @@
-@extends ('blog')
 
-@section('blog_posts')
   @foreach ($categories as $category)
-    <div>{{ $category->title }}</div>
+    <a href="/category/{{ $category->id }}/posts" class="nav-link">{{ $category->title }}</a>
   @endforeach
-@endsection
