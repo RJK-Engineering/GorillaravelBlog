@@ -1,9 +1,11 @@
 <?php
 
 Route::get('/', 'PostController@index');
-// Route::get('/{post}', 'PostController@show');
+Route::get('/posts/{post}', 'PostController@show');
 Route::get('/post/create', 'PostController@create');
 Route::post('/post', 'PostController@store');
+
+Route::post('/comment/{post}', 'CommentController@store');
 
 Route::get('/categories', 'CategoryController@index');
 // Route::get('/category/{category}', 'CategoryController@show');
@@ -14,3 +16,4 @@ Route::get('/comment/create', 'CommentController@create');
 Route::post('/comment'. 'CommentController@store');
 
 ?>
+
