@@ -14,13 +14,16 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
 
- public function boot()
- {
-     Schema::defaultStringLength(191);
-     view()->composer('category.index', function($view) {
-         $view->with('categories', Category::orderBy('id', 'asc')->get());
-     });
- }
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+        view()->composer([
+            'category.index',
+            'posts.create'
+        ], function($view) {
+            $view->with('categories', Category::orderBy('id', 'asc')->get());
+        });
+    }
 
     /**
      * Register any application services.
