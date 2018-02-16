@@ -1,8 +1,8 @@
 # Implementation
 
-- Live version @ http://gorillaravelblog.herokuapp.com/
-    - http://gorillaravelblog.herokuapp.com/post/create
-    - http://gorillaravelblog.herokuapp.com/categories/create
+Live version @ http://gorillaravelblog.herokuapp.com/
+- http://gorillaravelblog.herokuapp.com/post/create
+- http://gorillaravelblog.herokuapp.com/categories/create
     
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 
