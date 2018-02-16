@@ -1,0 +1,8 @@
+https://laravel.com/docs/5.6/seeding
+
+php artisan make:model Class --migration --resource --controller
+   model: /app/Class.php
+   migration: /database/migrations/..classes...php
+   control: /app/Http/Controllers/ClassController.php
+
+views (not generated): /resources/...
