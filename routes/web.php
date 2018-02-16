@@ -8,6 +8,7 @@ Route::get('/post/create', 'PostController@create');
 Route::post('/post', 'PostController@store');
 
 Route::post('/comment/{post}', 'CommentController@store');
+Route::delete('/comment/{comment}', 'CommentController@destroy');
 
 Route::get('/categories', 'CategoryController@index');
 // Route::get('/category/{category}', 'CategoryController@show');

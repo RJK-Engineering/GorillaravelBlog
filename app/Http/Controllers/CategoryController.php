@@ -22,9 +22,8 @@ class CategoryController extends Controller
 
     public function getPosts(Category $category) {
         $posts = $category->posts()->get();
-        $categories = Category::orderBy('id', 'asc')->get();
 
-        return view('posts.index', compact('posts', 'categories'));
+        return view('posts.index', compact('posts'));
     }
 
     public function store() {
