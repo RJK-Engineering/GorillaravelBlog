@@ -12,7 +12,7 @@ Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 - User can comment on single article page
 - User can delete a comment
 
-# Excersise
+# Excercise
 
 Deze keer voor het eerst een groepsopdracht: je voert deze opdracht uit samen met één andere trainee. De indeling is reeds bekend gemaakt. Dat betekent het volgende:
 * Je werkt samen in 1 git-repository.
