@@ -1,4 +1,10 @@
-Groeps Opdracht Week 5 - Laravel Groep
+#Groeps Opdracht Week 5 - Laravel Groep
+
+- Live version @ http://gorillaravelblog.herokuapp.com/
+    - http://gorillaravelblog.herokuapp.com/post/create
+    - http://gorillaravelblog.herokuapp.com/categories/create
+    
+Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 
 Deze keer voor het eerst een groepsopdracht: je voert deze opdracht uit samen met één andere trainee. De indeling is reeds bekend gemaakt. Dat betekent het volgende:
 * Je werkt samen in 1 git-repository.
