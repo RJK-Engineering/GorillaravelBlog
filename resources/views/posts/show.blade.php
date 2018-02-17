@@ -6,5 +6,8 @@
       <p>{{ $post->body }}</p>
     </article>
     @include('comments.show')
-    @include('comments.create')
+    @include('comments.on_off')
+    @if ($post->comments_on_off)
+        @include('comments.create')
+    @endif
 @endsection
