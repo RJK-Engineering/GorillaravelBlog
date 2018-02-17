@@ -42,4 +42,16 @@ class PostController extends Controller
         return redirect('/');
     }
 
+    public function changeCommentStatus(Post $post) {
+        if ($post->comments_on_off) {
+            $post->comments_on_off = 0;
+            $post->save();
+        }
+        else {
+            $post->comments_on_off = 1;
+            $post->save();
+        }
+        return back();
+    }
+
 }
