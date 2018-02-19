@@ -2,10 +2,11 @@
 
 @section('content')
     <h1 class="mt-5 mb-4">New blog post</h1>
-    <form method="post" action="/post" class="mb-5" >
+    <form method="post" enctype="multipart/form-data" action="/post" class="mb-5" >
 
         {{ csrf_field() }}
 
+        @include('errors')
         <div class="form-group">
             <label for="categoriesSelector">Select a category. Select multiple categories by holding the ctrl key and clicking.</label>
             <select class="form-control" id="categoriesSelector" name="category[]" multiple>
@@ -28,10 +29,10 @@
 		</div>
         <hr>
 
+
         <input type="submit" value="Submit blog post" class="btn"></input>
 
     </form>
 
-    @include('errors')
 
 @endsection
