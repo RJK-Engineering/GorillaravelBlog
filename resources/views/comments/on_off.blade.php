@@ -1,4 +1,4 @@
-<form class="form-inline" action="/posts/{{ $post->id }}" method="POST">
+<form class="form-inline" action="/posts/{{ $post->id }}/toggleCommentStatus" method="POST">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
 

@@ -2,7 +2,9 @@
 
 @section('content')
     <h1 class="mt-5 mb-4">New blog post</h1>
-    <form method="post" enctype="multipart/form-data" action="/post" class="mb-5" >
+
+    <form method="post" enctype="multipart/form-data" action="/posts" class="mb-5" >
+
 
         {{ csrf_field() }}
 
