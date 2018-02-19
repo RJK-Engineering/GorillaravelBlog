@@ -7,12 +7,12 @@
                     {{  $comment->comment }}
                 </div>
                 <div class="col-auto ml-auto">
-                    <form class="form-inline" action="/comment/{{ $comment->id }}" method="POST">
+                    <form class="form-inline" action="/comments/{{ $comment->id }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <input type="submit"
-                        value="delete" style="border: none; background:none"
-                        class="material-icons"></input>
+                        <input class="material-icons"
+                               type="submit" value="delete"
+                               style="border: none; background:none">
                     </form>
                 </div>
             </div>

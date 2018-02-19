@@ -3,7 +3,7 @@
 @section('content')
 
     <h1 class="mt-5 mb-4">New Category</h1>
-    <form class="form-inline" method="post" action="/category" class="mb-5" >
+    <form class="form-inline" method="post" action="/categories" class="mb-5" >
 
         {{ csrf_field() }}
 
