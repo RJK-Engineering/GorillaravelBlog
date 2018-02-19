@@ -8,23 +8,28 @@ use App\Comment;
 
 class CommentController extends Controller
 {
-    public function create(Post $post) {
-
-        return view('comments.create', compact('post'));
+    public function show(Comment $comment) {
+        return $this->redirectToPost($comment);
     }
 
-    public function store(Post $post) {
-        Comment::create([
-            'comment' => request('comment'),
-            'post_id' => $post->id,
-        ]);
+    public function create() {
+        return view('comments.create');
+    }
 
-        return redirect('/posts/' . $post->id . '#comments');
+    public function store() {
+        $comment = Comment::create([
+            'comment' => request('comment'),
+            'post_id' => request('post_id')
+        ]);
+        return $this->redirectToPost($comment);
     }
 
     public function destroy(Comment $comment) {
         $comment->delete();
+        return $this->redirectToPost($comment);
+    }
 
-        return redirect('/posts/' . $comment->post_id);
+    private function redirectToPost(Comment $comment) {
+        return redirect('/posts/' . $comment->post_id . '#comments');
     }
 }

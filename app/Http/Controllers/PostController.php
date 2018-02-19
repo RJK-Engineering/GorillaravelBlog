@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use App\Category;
+use Image;
 
 class PostController extends Controller
 {
@@ -24,33 +25,38 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store() {
+    public function store(Request $request) {
         $this->validate(request(),
         [
             'title' => 'required',
             'body' => 'required',
-            'category' => 'required'
+            'category' => 'required',
+            'post_thumbnail' => 'image|max:2000'
         ]);
 
         $post = Post::create([
             'title' => request('title'),
-            'body' => request('body')
+            'body' => request('body'),
         ]);
+
+        if( $request->hasFile('post_thumbnail') ) {
+            $post_thumbnail     = $request->file('post_thumbnail');
+            $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
+
+            Image::make($post_thumbnail)->save(public_path('uploads/' . $filename));
+
+            $post->post_thumbnail = $filename;
+            $post->save();
+        }
 
         $post->categories()->attach(request('category'));
 
         return redirect('/');
     }
 
-    public function changeCommentStatus(Post $post) {
-        if ($post->comments_on_off) {
-            $post->comments_on_off = 0;
-            $post->save();
-        }
-        else {
-            $post->comments_on_off = 1;
-            $post->save();
-        }
+    public function toggleCommentStatus(Post $post) {
+        $post->comments_on_off = $post->comments_on_off ? 0 : 1;
+        $post->save();
         return back();
     }
 
