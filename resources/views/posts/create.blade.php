@@ -8,11 +8,10 @@
 
         <div class="form-group">
             <label for="categoriesSelector">Select a category. Select multiple categories by holding the ctrl key and clicking.</label>
-            <select class="form-control" id="categoriesSelector" name="category">
-                <option value="1">Uncategorizable</option>
-
-                @yield('categories')
-
+            <select class="form-control" id="categoriesSelector" name="category[]" multiple>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">

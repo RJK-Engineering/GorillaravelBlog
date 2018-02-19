@@ -6,3 +6,5 @@ php artisan make:model Class --migration --resource --controller
    control: /app/Http/Controllers/ClassController.php
 
 views (not generated): /resources/...
+
+----------

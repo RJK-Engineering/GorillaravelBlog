@@ -17,7 +17,6 @@ class PostController extends Controller
 
     public function show(Post $post) {
         $comments = $post->comments()->get();
-
         return view('posts.show', compact('post', 'comments'));
     }
 
@@ -30,16 +29,29 @@ class PostController extends Controller
         [
             'title' => 'required',
             'body' => 'required',
-            'category_id' => 'required'
+            'category' => 'required'
         ]);
 
-        Post::create([
+        $post = Post::create([
             'title' => request('title'),
-            'body' => request('body'),
-            'category_id' =>request('category')
+            'body' => request('body')
         ]);
+
+        $post->categories()->attach(request('category'));
 
         return redirect('/');
+    }
+
+    public function changeCommentStatus(Post $post) {
+        if ($post->comments_on_off) {
+            $post->comments_on_off = 0;
+            $post->save();
+        }
+        else {
+            $post->comments_on_off = 1;
+            $post->save();
+        }
+        return back();
     }
 
 }

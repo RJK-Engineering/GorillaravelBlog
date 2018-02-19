@@ -31,6 +31,6 @@ class CategoryController extends Controller
             'title' => request('title')
         ]);
 
-        return redirect('/categories');
+        return redirect('/post/create');
     }
 }
