@@ -60,4 +60,11 @@ class PostController extends Controller
         return back();
     }
 
+    public function search(Request $request) {
+        $search_term = request('q');
+        $posts = Post::search($search_term)->get();
+
+        return view('posts.index', compact('posts'));
+    }
+
 }
