@@ -22,7 +22,14 @@
             <label for="text-area">Write your blog post here</label>
             <textarea class="form-control" id="text-area" rows="10" placeholder="Enter the blogpost here" name="body"></textarea>
         </div>
+        <div class="form-group">
+			<label for="post_thumbnail">Add an image</label> <br/>
+			<input class="form-control-file" type="file" name="post_thumbnail" id="post_thumbnail" />
+		</div>
+        <hr>
+
         <input type="submit" value="Submit blog post" class="btn"></input>
+
     </form>
 
     @include('errors')
