@@ -3,6 +3,9 @@
 @section('blog_posts')
     <article>
       <h2>{{ $post->title }}</h2>
+      @if ($post->post_thumbnail)
+          <img class="float-right mr-3" style="width: 25vw" src="/uploads/{{ $post->post_thumbnail }}">
+      @endif
       <p>{{ $post->body }}</p>
     </article>
     @include('comments.show')
