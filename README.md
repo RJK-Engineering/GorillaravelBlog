@@ -6,12 +6,6 @@ Live version @ http://gorillaravelblog.herokuapp.com/
 
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 
-- User can post articles
-- User can read articles
-- User can click on header to view article on single page
-- User can comment on single article page
-- User can delete a comment
-
 # User Stories
 
 User Story  | Als een ... | wil ik ... | zodat ...
