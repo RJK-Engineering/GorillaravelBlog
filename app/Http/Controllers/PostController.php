@@ -37,7 +37,7 @@ class PostController extends Controller
             'body' => request('body'),
         ]);
 
-        if( $request->hasFile('post_thumbnail') ) {
+        if ($request->hasFile('post_thumbnail') ) {
             $post_thumbnail     = $request->file('post_thumbnail');
             $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
 
@@ -66,9 +66,10 @@ class PostController extends Controller
             $post->post_thumbnail = $filename;
             $post->save();
         }
-11
-        if (!is_null(request('category')))
+
+        if (!is_null(request('category'))) {
             $post->categories()->attach(request('category'));
+        }
 
         $post->save();
         return redirect('/posts/' . $post->id);
