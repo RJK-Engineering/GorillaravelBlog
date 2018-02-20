@@ -1,4 +1,4 @@
-<form class="form-inline" action="/posts/{{ $post->id }}/toggleCommentStatus">
+<form class="form-inline" action="/posts/{{ $post->id }}/toggleCommentStatus" method="POST">
     {{ csrf_field() }}
     <button class="btn ml-auto mr-auto mb-3" style="cursor: pointer">
         @if ($post->comments_on_off)

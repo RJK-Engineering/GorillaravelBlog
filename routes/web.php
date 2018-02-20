@@ -7,7 +7,7 @@ Auth::routes();
 Route::resource('posts', 'PostController');
 
 Route::get('/', 'PostController@index');
-Route::get('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
+Route::post('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
 
 Route::resource('comments', 'CommentController');
 
