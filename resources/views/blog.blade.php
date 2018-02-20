@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-    <h1 class="text-center mt-5 mb-4">Gorilla Blog</h1>
+    <h1 class="text-center mt-5 mb-4">GorillaBlog</h1>
     <div class="row">
         <div class="col-auto-md">
             <nav class="nav flex-column">
