@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.app')
 
 @section('content')
     <h1 class="mt-5 mb-4">Edit blog post</h1>
@@ -7,7 +7,7 @@
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
 
-        @include('errors')
+        @include('layouts.errors')
         <div class="form-group">
             <label for="categoriesSelector">Select a category. Select multiple categories by holding the ctrl key and clicking.</label>
             <select class="form-control" id="categoriesSelector" name="category[]" multiple>
