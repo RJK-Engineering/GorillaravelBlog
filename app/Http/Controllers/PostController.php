@@ -10,6 +10,9 @@ use Image;
 
 class PostController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
+    }
     public function index() {
         $posts = Post::orderBy('id', 'desc')->get();
         $categories = Category::orderBy('title', 'asc')->get();
