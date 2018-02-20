@@ -1,7 +1,5 @@
-<form class="form-inline" action="/posts/{{ $post->id }}/toggleCommentStatus" method="POST">
+<form class="form-inline" action="/posts/{{ $post->id }}/toggleCommentStatus">
     {{ csrf_field() }}
-    {{ method_field('PATCH') }}
-
     <button class="btn ml-auto mr-auto mb-3">
         @if ($post->comments_on_off)
             <i class="material-icons">lock_outline</i>
