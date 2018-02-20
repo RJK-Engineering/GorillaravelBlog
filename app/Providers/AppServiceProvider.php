@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
             'category.index',
             'posts.create'
         ], function($view) {
-            $view->with('categories', Category::orderBy('id', 'asc')->get());
+            $view->with('categories', Category::orderBy('title', 'asc')->get());
         });
     }
 
