@@ -5,6 +5,9 @@
     <div class="row">
         <div class="col-auto-md">
             <nav class="nav flex-column">
+
+                @include ('posts.search')
+
                 <a href="/" id="ALL" class="nav-link category-menu">All</a>
 
                 @include ('category.index')

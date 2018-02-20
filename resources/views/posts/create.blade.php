@@ -5,7 +5,6 @@
 
     <form method="post" enctype="multipart/form-data" action="/posts" class="mb-5" >
 
-
         {{ csrf_field() }}
 
         @include('errors')
