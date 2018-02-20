@@ -8,3 +8,5 @@ php artisan make:model Class --migration --resource --controller
 views (not generated): /resources/...
 
 ----------
+Install dependencies: composer install
+In C:\xampp\php\php.ini, extension=sqlite3 needs to be uncommented (needed for search functionality)

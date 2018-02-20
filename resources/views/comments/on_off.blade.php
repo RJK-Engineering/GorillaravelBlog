@@ -1,6 +1,6 @@
 <form class="form-inline" action="/posts/{{ $post->id }}/toggleCommentStatus">
     {{ csrf_field() }}
-    <button class="btn ml-auto mr-auto mb-3">
+    <button class="btn ml-auto mr-auto mb-3" style="cursor: pointer">
         @if ($post->comments_on_off)
             <i class="material-icons">lock_outline</i>
         @else
