@@ -25,25 +25,34 @@ class PostController extends Controller
     }
 
     public function store() {
-        $this->validate(request(),
-        [
+        $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
             'category' => 'required'
         ]);
-
         $post = Post::create([
             'title' => request('title'),
             'body' => request('body')
         ]);
-
         $post->categories()->attach(request('category'));
-
         return redirect('/');
     }
 
+    public function update(Post $post) {
+        $input = request()->only('title', 'body', 'comments_on_off');
+        foreach ($input as $key => $value) {
+            $post->$key = $value;
+        }
+
+        if (!is_null(request('category')))
+            $post->categories()->attach(request('category'));
+
+        $post->save();
+        return back();
+    }
+
     public function toggleCommentStatus(Post $post) {
-        $post->comments_on_off = $post->comments_on_off ? 0 : 1;
+        $post->toggleCommentStatus();
         $post->save();
         return back();
     }
