@@ -22,7 +22,6 @@ class CategoryController extends Controller
 
     public function posts(Category $category) {
         $posts = $category->posts()->get();
-
         return view('posts.index', compact('posts'));
     }
 
@@ -30,7 +29,6 @@ class CategoryController extends Controller
         category::create([
             'title' => request('title')
         ]);
-
         return redirect('/posts/create');
     }
 }
