@@ -1,4 +1,4 @@
-@extends ('blog')
+@extends ('layouts.blog')
 
 @section('blog_posts')
     <article>

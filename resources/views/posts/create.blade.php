@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.app')
 
 @section('content')
     <h1 class="mt-5 mb-4">New blog post</h1>
