@@ -19,7 +19,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         view()->composer([
             'category.index',
-            'posts.create'
+            'posts.create',
+            'posts.edit',
         ], function($view) {
             $view->with('categories', Category::orderBy('title', 'asc')->get());
         });

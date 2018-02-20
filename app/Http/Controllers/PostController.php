@@ -37,7 +37,7 @@ class PostController extends Controller
             'body' => request('body'),
         ]);
 
-        if( $request->hasFile('post_thumbnail') ) {
+        if ($request->hasFile('post_thumbnail') ) {
             $post_thumbnail     = $request->file('post_thumbnail');
             $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
 
@@ -51,17 +51,28 @@ class PostController extends Controller
         return redirect('/');
     }
 
-    public function update(Post $post) {
-        $input = request()->only('title', 'body', 'comments_on_off');
+    public function update(Post $post, Request $request) {
+        $input = request()->only('title', 'body');
         foreach ($input as $key => $value) {
             $post->$key = $value;
         }
 
-        if (!is_null(request('category')))
+        if( $request->hasFile('post_thumbnail') ) {
+            $post_thumbnail     = $request->file('post_thumbnail');
+            $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
+
+            Image::make($post_thumbnail)->save(public_path('uploads/' . $filename));
+
+            $post->post_thumbnail = $filename;
+            $post->save();
+        }
+
+        if (!is_null(request('category'))) {
             $post->categories()->attach(request('category'));
+        }
 
         $post->save();
-        return back();
+        return redirect('/posts/' . $post->id);
     }
 
     public function toggleCommentStatus(Post $post) {
@@ -75,6 +86,10 @@ class PostController extends Controller
         $posts = Post::search($search_term)->get();
 
         return view('posts.index', compact('posts'));
+    }
+
+    public function edit(Post $post) {
+        return view('posts.edit', compact('post'));
     }
 
 }
