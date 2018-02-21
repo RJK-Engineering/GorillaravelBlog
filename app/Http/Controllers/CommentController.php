@@ -8,6 +8,14 @@ use App\Comment;
 
 class CommentController extends Controller
 {
+    public function __construct() {
+    $this->middleware('auth', ['except' => 'show']);
+    }
+
+    public function index(Comment $comment) {
+        return redirect('/posts/' . $comment->post_id . '#comments');
+    }
+
     public function show(Comment $comment) {
         return redirect('/posts/' . $comment->post_id . '#comments');
     }
