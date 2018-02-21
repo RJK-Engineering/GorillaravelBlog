@@ -14,9 +14,12 @@ class PostController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
     public function index() {
-        $posts = Post::orderBy('id', 'desc')->get();
+        $posts = Post::orderBy('id', 'desc')
+                    ->filter(request(['month', 'year']))
+                    ->get();
+
         $categories = Category::orderBy('title', 'asc')->get();
-        return view('posts.index', compact('posts', 'categories'));
+        return view('posts.index', compact('posts', 'categories', 'archives'));
     }
 
     public function show(Post $post) {
