@@ -34,3 +34,6 @@ composer.phar
 /public/packages
 
 /node_modules
+
+storage/*
+
