@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Category;
 use App\Post;
+use App\TextExpander;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('posts.archives', function($view) {
             $view->with('archives', Post::archives());
+        });
+
+        view()->composer('textExpander.index', function($view) {
+            $view->with('snippets', TextExpander::get());
         });
     }
 
