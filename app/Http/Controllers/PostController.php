@@ -50,7 +50,9 @@ class PostController extends Controller
             $post->save();
         }
 
-        $post->categories()->attach(request('category'));
+        if (sizeof(request('category')) > 0) {
+            $post->categories()->sync(request('category'));
+        }
         return redirect('/');
     }
 
@@ -71,7 +73,7 @@ class PostController extends Controller
         }
 
         if (!is_null(request('category'))) {
-            $post->categories()->attach(request('category'));
+            $post->categories()->sync(request('category'));
         }
 
         $post->save();
