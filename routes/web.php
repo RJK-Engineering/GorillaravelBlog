@@ -14,4 +14,8 @@ Route::resource('comments', 'CommentController');
 Route::resource('categories', 'CategoryController');
 Route::get('/categories/{category}/posts', 'CategoryController@posts');
 
+Route::view('/snippets', 'TextExpander.create');
+Route::post('/snippets/create', 'TextExpanderController@store');
+Route::get('/snippets/index', 'TextExpanderController@index');
+Route::get('snippets/json', 'TextExpanderController@json');
 ?>
