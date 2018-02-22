@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="mt-5 mb-4">New blog post</h1>
 
-    <form method="post" enctype="multipart/form-data" action="/posts" class="mb-5" >
+    <form method="post" enctype="multipart/form-data" action="/posts" class="mb-3" >
 
         {{ csrf_field() }}
 
@@ -15,6 +15,9 @@
                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="mb-3">
+            @include('textExpander.index')
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Title</label>
