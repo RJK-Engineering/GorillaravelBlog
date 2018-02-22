@@ -27,4 +27,7 @@ class CreateBlogIdColumn extends Migration
             $table->dropColumn('blog_id');
         });
     }
+
 }
+
+?>

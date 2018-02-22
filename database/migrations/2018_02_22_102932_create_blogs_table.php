@@ -11,8 +11,7 @@ class CreateBlogsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('blogs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->references('users')->on('id');
@@ -26,8 +25,10 @@ class CreateBlogsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('blogs');
     }
+
 }
+
+?>
