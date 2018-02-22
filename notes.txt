@@ -10,3 +10,6 @@ views (not generated): /resources/...
 ----------
 Install dependencies: composer install
 In C:\xampp\php\php.ini, extension=sqlite3 needs to be uncommented (needed for search functionality)
+
+.env
+SCOUT_DRIVER=tntsearch
