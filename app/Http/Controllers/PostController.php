@@ -53,7 +53,7 @@ class PostController extends Controller
             $post->save();
         }
 
-        if (sizeof(request('category')) > 0) {
+        if (sizeof(request('category'))) {
             $post->categories()->sync(request('category'));
         }
         return redirect('/');
@@ -61,9 +61,7 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request) {
         $input = request()->only('title', 'body');
-        foreach ($input as $key => $value) {
-            $post->$key = $value;
-        }
+        $post->update($input);
 
         if( $request->hasFile('post_thumbnail') ) {
             $post_thumbnail     = $request->file('post_thumbnail');
@@ -75,11 +73,11 @@ class PostController extends Controller
             $post->save();
         }
 
-        if (!is_null(request('category'))) {
-            $post->categories()->sync(request('category'));
+        $input = request()->only('category');
+        if (sizeof($input)) {
+            $post->categories()->sync($input['category']);
         }
 
-        $post->save();
         return redirect('/posts/' . $post->id);
     }
 
