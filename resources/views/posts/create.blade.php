@@ -7,7 +7,7 @@
 
         {{ csrf_field() }}
 
-        @include('errors')
+        @include('layouts.errors')
         <div class="form-group">
             <label for="categoriesSelector">Select a category. Select multiple categories by holding the ctrl key and clicking.</label>
             <select class="form-control" id="categoriesSelector" name="category[]" multiple>
