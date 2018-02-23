@@ -3,8 +3,8 @@
 @section('blog_posts')
     <article>
       <h2>
-          <a class="material-icons" href="/posts/{{ $post->id }}/edit">edit</a>
           {{ $post->title }}
+          <a class="material-icons" href="/posts/{{ $post->id }}/edit">edit</a>
       </h2>
       @if ($post->post_thumbnail)
           <img class="float-right mr-3" style="width: 25vw" src="/uploads/{{ $post->post_thumbnail }}">

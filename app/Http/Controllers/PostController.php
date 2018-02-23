@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use App\Comment;
 use App\Category;
 use Image;
 
@@ -18,8 +17,7 @@ class PostController extends Controller
                     ->filter(request(['month', 'year']))
                     ->get();
 
-        $categories = Category::orderBy('title', 'asc')->get();
-        return view('posts.index', compact('posts', 'categories', 'archives'));
+        return view('posts.index', compact('posts', 'categories'));
     }
 
     public function show(Post $post) {
@@ -53,7 +51,7 @@ class PostController extends Controller
             $post->save();
         }
 
-        if (sizeof(request('category')) > 0) {
+        if (sizeof(request('category'))) {
             $post->categories()->sync(request('category'));
         }
         return redirect('/');
@@ -61,9 +59,7 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request) {
         $input = request()->only('title', 'body');
-        foreach ($input as $key => $value) {
-            $post->$key = $value;
-        }
+        $post->update($input);
 
         if( $request->hasFile('post_thumbnail') ) {
             $post_thumbnail     = $request->file('post_thumbnail');
@@ -75,11 +71,11 @@ class PostController extends Controller
             $post->save();
         }
 
-        if (!is_null(request('category'))) {
-            $post->categories()->sync(request('category'));
+        $input = request()->only('category');
+        if (sizeof($input)) {
+            $post->categories()->sync($input['category']);
         }
 
-        $post->save();
         return redirect('/posts/' . $post->id);
     }
 
