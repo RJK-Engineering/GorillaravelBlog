@@ -11,7 +11,7 @@ use Image;
 class PostController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search', 'json']]);
     }
     public function index() {
         $posts = Post::orderBy('id', 'desc')
@@ -98,6 +98,10 @@ class PostController extends Controller
 
     public function edit(Post $post) {
         return view('posts.edit', compact('post'));
+    }
+
+    public function json() {
+        return Post::orderBy('id', 'desc')->get();
     }
 
 }
