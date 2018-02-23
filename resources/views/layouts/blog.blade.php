@@ -8,7 +8,7 @@
 
                 @include ('posts.search')
                 <span class="px-3 py-2"><u>Categories</u></span>
-                <a href="/" id="ALL" class="nav-link category-menu">All</a>
+                <a href="/posts/json" id="ALL" class="nav-link category-link">All</a>
 
                 @include ('category.index')
                 <span class="px-3 py-2"><u>Archives</u></span>
