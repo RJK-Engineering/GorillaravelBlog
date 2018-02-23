@@ -6,6 +6,31 @@ Live version @ http://gorillaravelblog.herokuapp.com/
 
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 
+```
+Prerequisites:
+PHP 7.2.1
+composer
+MySql or other laravel compatible database software
+```
+```
+Install
+Clone repository, 
+run composer install, 
+run php artisan migrate
+```
+Implemented features week 6:
+- add image to post
+- js text expander
+- js categories menu without reload
+- home page with information about the blog platform
+- register and login functionality
+- multi user platform started
+- archives feature in the sidebar
+- edit post functionality
+- get new password by email
+- search function
+- add image to post
+
 # Excercise Week 5
 
 Deze keer voor het eerst een groepsopdracht: je voert deze opdracht uit samen met één andere trainee. De indeling is reeds bekend gemaakt. Dat betekent het volgende:

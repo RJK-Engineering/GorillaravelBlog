@@ -1,5 +1,9 @@
 <?php
 
+/* Home */
+
+Route::view('/', 'home.welcome');
+
 /* Auth Controllers */
 
 Auth::routes();
