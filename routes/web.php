@@ -11,7 +11,7 @@ Route::get('/{blog}/posts', 'BlogController@posts');
 
 /* HomeController */
 
-Route::get('/', 'HomeController@home');
+Route::view('/', 'home.welcome');
 Route::get('/{blog}', 'HomeController@posts');
 
 /* PostController */
