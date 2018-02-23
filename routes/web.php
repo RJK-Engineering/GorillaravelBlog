@@ -7,12 +7,7 @@ Auth::routes();
 /* BlogController */
 
 Route::resource('blogs', 'BlogController');
-Route::get('/{blog}/posts', 'BlogController@posts');
-
-/* HomeController */
-
-Route::get('/', 'HomeController@home');
-Route::get('/{blog}', 'HomeController@posts');
+// Route::get('/{blog}/posts', 'BlogController@posts');
 
 /* PostController */
 
@@ -23,6 +18,12 @@ Route::get('/posts/json', 'PostController@json');
 
 Route::resource('posts', 'PostController');
 Route::post('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
+
+/* HomeController */
+
+Route::get('/', 'HomeController@home');
+Route::get('/{blog}', 'HomeController@posts');
+Route::get('/{blog}/admin', 'Admin\PostController@index');
 
 /* CommentController */
 

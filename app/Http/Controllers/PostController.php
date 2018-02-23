@@ -12,12 +12,13 @@ class PostController extends Controller
     public function __construct() {
         $this->middleware('auth', ['except' => ['index', 'show', 'search', 'json']]);
     }
+
     public function index() {
         $posts = Post::orderBy('id', 'desc')
-                    ->filter(request(['month', 'year']))
-                    ->get();
+            ->filter(request(['month', 'year']))
+            ->get();
 
-        return view('posts.index', compact('posts', 'categories'));
+        return view('posts.index', compact('posts'));
     }
 
     public function show(Post $post) {
@@ -57,6 +58,10 @@ class PostController extends Controller
         return redirect('/');
     }
 
+    public function edit(Post $post) {
+        return view('posts.edit', compact('post'));
+    }
+
     public function update(Post $post, Request $request) {
         $input = request()->only('title', 'body');
         $post->update($input);
@@ -79,6 +84,11 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
 
+    public function destroy(Post $post) {
+        $post->delete();
+        return back();
+    }
+
     public function toggleCommentStatus(Post $post) {
         $post->toggleCommentStatus();
         $post->save();
@@ -90,10 +100,6 @@ class PostController extends Controller
         $posts = Post::search($search_term)->get();
 
         return view('posts.index', compact('posts'));
-    }
-
-    public function edit(Post $post) {
-        return view('posts.edit', compact('post'));
     }
 
     public function json() {

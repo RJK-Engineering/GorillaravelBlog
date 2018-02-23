@@ -19,7 +19,7 @@ class HomeController extends Controller
     }
 
     public function posts(Blog $blog) {
-        $posts = Post::where('blog_id', $blog->id)
+        $posts = $blog->posts()
             ->orderBy('id', 'desc')
             ->filter(request(['month', 'year']))
             ->get();
