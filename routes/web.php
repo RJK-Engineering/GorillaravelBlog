@@ -2,6 +2,7 @@
 // get posts/search route only works when declared before resource posts routes
 Route::get('/posts/search', 'PostController@search');
 Route::get('/posts/{post}/edit', 'PostController@edit');
+Route::get('posts/json', 'PostController@json');
 Auth::routes();
 
 Route::resource('posts', 'PostController');

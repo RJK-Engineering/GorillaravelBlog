@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function posts(Category $category) {
         $posts = $category->posts()->get();
-        return view('posts.index', compact('posts'));
+        return $posts;
     }
 
     public function store() {
