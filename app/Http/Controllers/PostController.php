@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use App\Comment;
 use App\Category;
 use Image;
 
@@ -18,8 +17,7 @@ class PostController extends Controller
                     ->filter(request(['month', 'year']))
                     ->get();
 
-        $categories = Category::orderBy('title', 'asc')->get();
-        return view('posts.index', compact('posts', 'categories', 'archives'));
+        return view('posts.index', compact('posts', 'categories'));
     }
 
     public function show(Post $post) {

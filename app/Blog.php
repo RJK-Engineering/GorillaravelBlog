@@ -4,6 +4,10 @@ namespace App;
 
 class Blog extends Model
 {
+    public function getRouteKeyName() {
+        return 'title';
+    }
+
     public function posts() {
         return $this->hasMany(Post::class);
     }
