@@ -17,10 +17,10 @@
       <td>{{ $blog->user()->name }}</td>
       <td>{{ $blog->user()->email }}</td>
       <td>
-        <a class="material-icons" href="/blogs/{{ $blog->id }}/edit">edit</a>
+        <a class="material-icons" href="/blogs/{{ $blog->title }}/edit">edit</a>
       </td>
       <td>
-        <form class="form-inline" action="/blogs/{{ $blog->id }}" method="POST">
+        <form class="form-inline" action="/blogs/{{ $blog->title }}" method="POST">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
           <input class="material-icons"

@@ -25,7 +25,6 @@ Route::post('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentSt
 
 /* HomeController */
 
-Route::get('/', 'HomeController@home');
 Route::get('/{blog}', 'HomeController@posts');
 Route::get('/{blog}/admin', 'Admin\PostController@index');
 

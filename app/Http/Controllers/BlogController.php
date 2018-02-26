@@ -81,7 +81,7 @@ class BlogController extends Controller
             'user_id' => request('user_id'),
             'title' => request('title'),
         ]);
-        return view('blogs.show', compact('blog'));
+        return $this->show($blog);
     }
 
     /**
