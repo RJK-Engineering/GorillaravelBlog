@@ -29,11 +29,24 @@ class Post extends Model
     }
 
     public static function archives() {
-        return static::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) as published')
-                    ->groupBy('year', 'month')
-                    ->orderByRaw('min(created_at)')
-                    ->get()
-                    ->toArray();
+        $db = config('database')['default'];
+        dd($db);
+        if ($db == "mysql") {
+            $res = static::selectRaw(
+                'year(created_at) as year,' .
+                ' monthname(created_at) as month,' .
+                ' count(*) as published'
+            );
+        } elseif ($db == "pgsql") {
+            $res = static::selectRaw(
+                "to_char(created_at, 'YYYY') year," .
+                " to_char(created_at, 'MM') month," .
+                ' count(*) published'
+            );
+        }
+        return $res->groupBy('year', 'month')
+            ->orderByRaw('min(created_at)')
+            ->get()->toArray();
     }
 
     public function scopeFilter($query, $filters) {
