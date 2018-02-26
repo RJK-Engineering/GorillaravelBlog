@@ -1,7 +1,8 @@
 # Implementation
 
 Live version @ http://gorillaravelblog.herokuapp.com/
-- http://gorillaravelblog.herokuapp.com/post/create
+- http://gorillaravelblog.herokuapp.com/blogs/create
+- http://gorillaravelblog.herokuapp.com/posts/create
 - http://gorillaravelblog.herokuapp.com/categories/create
 
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
@@ -9,14 +10,15 @@ Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 ```
 Prerequisites:
 PHP 7.2.1
-composer
+Composer
 MySql or other laravel compatible database software
 ```
 ```
-Install
-Clone repository, 
-run composer install, 
+Install:
+Clone repository
+run composer install
 run php artisan migrate
+run php artisan db:seed
 ```
 Implemented features week 6:
 - add image to post
