@@ -30,7 +30,6 @@ class Post extends Model
 
     public static function archives() {
         $db = config('database')['default'];
-        dd($db);
         if ($db == "mysql") {
             $res = static::selectRaw(
                 'year(created_at) as year,' .
@@ -45,7 +44,7 @@ class Post extends Model
             );
         }
         return $res->groupBy('year', 'month')
-            ->orderByRaw('min(created_at)')
+            ->orderBy('year', 'month')
             ->get()->toArray();
     }
 
