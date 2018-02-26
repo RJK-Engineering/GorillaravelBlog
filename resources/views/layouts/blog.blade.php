@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center mt-5 mb-4">GorillaBlog</h1>
+    <h1 class="text-center mt-5 mb-4">
+        GorillaBlog
+        <a class="material-icons" href="/posts/{{ $blog->title }}/create" title="New Post">note_add</a>
+    </h1>
     <div class="row">
         <div class="col-auto-md">
             <nav class="nav flex-column">

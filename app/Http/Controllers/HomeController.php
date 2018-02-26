@@ -24,7 +24,7 @@ class HomeController extends Controller
             ->filter(request(['month', 'year']))
             ->get();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('blog', 'posts'));
     }
 
 }

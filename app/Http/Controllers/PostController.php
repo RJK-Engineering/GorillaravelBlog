@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blog;
 use App\Post;
 use App\Category;
 use Image;
@@ -21,23 +22,25 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show(Post $post) {
+    public function show(Blog $blog, Post $post) {
         $comments = $post->comments()->get();
-        return view('posts.show', compact('post', 'comments'));
+        return view('posts.show', compact('blog', 'post', 'comments'));
     }
 
-    public function create() {
-        return view('posts.create');
+    public function create(Blog $blog) {
+        return view('posts.create', compact('blog'));
     }
 
     public function store(Request $request) {
         $this->validate(request(), [
+            'blog_id' => 'required',
             'title' => 'required',
             'body' => 'required',
             'category' => 'required',
             'post_thumbnail' => 'image|max:2000'
         ]);
         $post = Post::create([
+            'blog_id' => request('blog_id'),
             'title' => request('title'),
             'body' => request('body'),
         ]);

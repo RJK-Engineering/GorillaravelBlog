@@ -22,11 +22,14 @@ Route::get('/posts/json', 'PostController@json');
 
 Route::resource('posts', 'PostController');
 Route::post('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
+Route::get('/posts/{blog}/create', 'PostController@create');
+Route::get('/posts/{blog}/edit', 'PostController@edit');
 
 /* HomeController */
 
 Route::get('/{blog}', 'HomeController@posts');
 Route::get('/{blog}/admin', 'Admin\PostController@index');
+Route::get('/{blog}/{post}', 'PostController@show');
 
 /* CommentController */
 
