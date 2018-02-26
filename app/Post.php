@@ -30,7 +30,6 @@ class Post extends Model
 
     public static function archives() {
         $db = config('database')['default'];
-        dd($db);
         if ($db == "mysql") {
             $res = static::selectRaw(
                 'year(created_at) as year,' .
@@ -39,13 +38,13 @@ class Post extends Model
             );
         } elseif ($db == "pgsql") {
             $res = static::selectRaw(
-                "to_char(created_at, 'YYYY') year," .
-                " to_char(created_at, 'MM') month," .
-                ' count(*) published'
+                "to_char(created_at, 'YYYY') as year," .
+                " to_char(created_at, 'MM') as month," .
+                ' count(*) as published'
             );
         }
         return $res->groupBy('year', 'month')
-            ->orderByRaw('min(created_at)')
+            ->orderBy('year', 'month')
             ->get()->toArray();
     }
 
