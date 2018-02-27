@@ -3,6 +3,7 @@
 @section('content')
   <table class="table">
   <tr>
+    <th>Name</th>
     <th>Title</th>
     <th>Blogger</th>
     <th>Email</th>
@@ -12,8 +13,10 @@
   @foreach ($blogs as $blog)
     <tr>
       <td>
-        <a href="/{{ $blog->title }}">{{ $blog->title }}</a>
+        <!-- <a href="/{{ $blog->name }}">{{ $blog->name }}</a> -->
+        <a href="/{{ $blog->title }}">TODO</a>
       </td>
+      <td>{{ $blog->title }}</td>
       <td>{{ $blog->user()->name }}</td>
       <td>{{ $blog->user()->email }}</td>
       <td>

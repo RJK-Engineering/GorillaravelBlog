@@ -3,7 +3,6 @@
 @section('content')
   <table class="table">
   <tr>
-    <th>Name</th>
     <th>Title</th>
     <th>Comments</th>
     <th>Edit</th>
@@ -11,10 +10,6 @@
   </tr>
   @foreach ($posts as $post)
     <tr>
-      <td>
-        <!-- <a href="/{{ $post->name }}">{{ $post->name }}</a> -->
-        <a href="/{{ $post->title }}">TODO</a>
-      </td>
       <td>
         {{ $post->title }}
       </td>
