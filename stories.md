@@ -1,5 +1,13 @@
 # User Stories
 
+* [Week 3](#week-3)
+* [Week 4](#week-4)
+* [Week 6](#week-6)
+* [Week 7](#week-7)
+* [Week 7 Frontend](#week-7-frontend)
+
+## Week 3
+
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
 W3-001      | Blogger     | artikelen om mijn blog plaatsen | ik mijn ideeen met andere kan delen
@@ -11,6 +19,8 @@ W3-006      | Blogger     | ook meerdere categorieën kunnen koppelen aan een ar
 W3-007      | Blogger     | wil ik de tekst in het artikel kunnen formateren (bijv. vet gedrukt of cursief maken). Tip: maak hierbij gebruik van een standaard Javascript library | ik duidelijker mijn boodschap kan overbrengen
 W3-008      | Blogger     | wil ik een afbeeldingen in een artikel kunnen plaatsen | ik duidelijker mijn boodschap kan overbrengen
 
+## Week 4
+
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
 W4-001      | Blogger     | wil ik een text-expander die als ik een artikel aan het schrijven ben door mij zelf gedefinieerde afkortingen die ik type direct omzet in de volledige tekst<br><br><i>Voorbeeld: Als ik CG type moet er direct CodeGorilla verschijnen. En als ik gn type mot er direct Groningen verschijnen<br><br>Tip: Maak hiervoor gebruik van Javascript</i> | ik sneller mijn artikelen schrijven
@@ -18,6 +28,8 @@ W4-002      | Lezer       | wil ik anoniem commentaar kunnen geven op een artike
 W4-003      | Lezer       | alleen de artikelen in een bepaalde categorie kunnen selecteren met behulp van een kolom aan de linkerkant van het scherm ​EN wordt de pagina niet opnieuwe ingelezen<br><br><i>Tip: Maak hiervoor gebruik van Javascript. NB: Dit is een variant van W3-004</i> | ik nog sneller gericht alle artikelen over een bepaald thema kan lezen
 W4-004      | Blogger     | wil ik ongewenst commentaar kunnen verwijderen | ik trollen kan stoppen
 W4-005      | Blogger     | wil ik voor een artikel kunnen instellen dat geen commentaar kan worden gegeven | ik een uit de hand gelopen discussie kan stoppen
+
+## Week 6
 
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
@@ -38,6 +50,8 @@ W6-014      | Blogger     | een email ontvangen als iemand commentaar geeft op e
 W6-015      | Lezer       | kunnen zien welke nieuwe artikelen op de verschillende blogs zijn geplaatst | ik interessante nieuwe blogs kan ontdekken
 W6-016      | Lezer       | me abonneren op een blog en krijg ik een email als er een nieuwe artikel van een blogger verschijnt | ik op de hoogte kan blijven wat mijn favoriete bloggers doen
 
+## Week 7
+
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
 W7-001      | Platform Eigenaar | maandelijks geld gaan vragen voor het hosten van een blog voor een blogger. Bloggers kunnen gratis 5 artikelen plaatsen om het platform te testen. Indien je meer artikelen wilt plaatsen betaal je eenmalig 9,99 euro | ik inkomsten kan genereren om de ontwikkelen en hosting van het platform te kunnen betalen.
@@ -50,6 +64,8 @@ W7-007      | Platform Eigenaar | een aantal veiligheidstests (een test op query
 W7-008      | Lezer       | uit meerdere talen kunnen kiezen | ik lezers uit verschillende landen mijn blog in hun eigen taal kan laten lezen
 W7-009      | Platform Eigenaar | vanuit de backend een backup van alle weblogs kunnen maken in de vorm van een database dump | ik backups heb die ik op een later moment terug kan plaatsen (importeren)
 W7-010      | Blogger     | vanuit mijn instellingen een backup van mijn eigen blog kunnen maken in een formaat dat ik later kan importeren in andere blogplatformen | ik makkelijk kan overstappen naar een ander blogplatform zonder mijn artikelen kwijt te raken.
+
+## Week 7 Frontend
 
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
