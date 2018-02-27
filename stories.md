@@ -40,23 +40,23 @@ W6-016      | Lezer       | me abonneren op een blog en krijg ik een email als e
 
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
-W7-001      | Platform Eigenaar | maandelijks geld gaan vragen voor het hosten van een blog voor een blogger. Bloggers kunnen gratis 5 artikelen plaatsen om het platform te testen. Indien je meer artikelen wilt plaatsen betaal je eenmalig 9,99 euro | om zo inkomsten te genereren om de ontwikkelen en hosting van het platform te kunnen betalen.
-W7-002      | Blogger     | eerst gratis vijf artikelen kunnen plaatsen | zodat ik het platform kan uitproberen
-W7-003      | Blogger     | mijzelf kunnen aanmelden voor de betaalde dienst. Het enige dat ik hoef door te geven zijn mijn bankgegevens. | zodat ik meer dan vijf artikelen kan gaan plaatsen
-W7-004      | Platform Eigenaar | 1x per maand een Excel spreadsheet kunnen genereren die ik kan gebruiken om het maandelijkse incasso bestand voor de bank te kunnen maken. Ik maar hiervoor gebruik van de website sepatool.nl die het ​echte​ incasso bestand maakt | zodat ik geld kan incasseren
-W7-005      | Platform Eigenaar | maandelijks een email naar alle betaalde bloggers sturen met daarin de hun factuur. op dit moment is het alleen de eerste keer een factuur met een eenmalige fee. | zodat bloggers een factuur hebben voor de automatisch incasso
-W7-006      | Platform Eigenaar | de blogger de mogelijkheid bieden om via een credit-card de automatisch incasso te doen | zodat ik wereldwijd bloggers kan aansluiten en ik ook meer kans heb dat het bedrag ook daadwerkelijk binnenkomt.
-W7-007      | Platform Eigenaar | een aantal veiligheidstests (een test op query-injection) kunnen uitvoeren op mijn blog | zodat mijn weblog beter beschermd is tegen aanvallen
-W7-008      | Lezer       | uit meerdere talen kunnen kiezen | zodat lezers uit verschillende landen mijn blog in hun eigen taal kunnen lezen
-W7-009      | Platform Eigenaar | vanuit de backend een backup van alle weblogs kunnen maken in de vorm van een database dump | zodat ik backups heb die ik op een later moment terug kan plaatsen (importeren)
-W7-010      | Blogger     | vanuit mijn instellingen een backup van mijn eigen blog kunnen maken in een formaat dat ik later kan importeren in andere blogplatformen | zodat ik makkelijk kan overstappen naar een ander blogplatform zonder mijn artikelen kwijt te raken.
+W7-001      | Platform Eigenaar | maandelijks geld gaan vragen voor het hosten van een blog voor een blogger. Bloggers kunnen gratis 5 artikelen plaatsen om het platform te testen. Indien je meer artikelen wilt plaatsen betaal je eenmalig 9,99 euro | ik inkomsten kan genereren om de ontwikkelen en hosting van het platform te kunnen betalen.
+W7-002      | Blogger     | eerst gratis vijf artikelen kunnen plaatsen | ik het platform kan uitproberen
+W7-003      | Blogger     | mijzelf kunnen aanmelden voor de betaalde dienst. Het enige dat ik hoef door te geven zijn mijn bankgegevens. | ik meer dan vijf artikelen kan gaan plaatsen
+W7-004      | Platform Eigenaar | 1x per maand een Excel spreadsheet kunnen genereren die ik kan gebruiken om het maandelijkse incasso bestand voor de bank te kunnen maken. Ik maar hiervoor gebruik van de website sepatool.nl die het ​echte​ incasso bestand maakt | ik geld kan incasseren
+W7-005      | Platform Eigenaar | maandelijks een email naar alle betaalde bloggers sturen met daarin de hun factuur. op dit moment is het alleen de eerste keer een factuur met een eenmalige fee. | ik bloggers een factuur kan bieden voor de automatisch incasso
+W7-006      | Platform Eigenaar | de blogger de mogelijkheid bieden om via een credit-card de automatisch incasso te doen | ik wereldwijd bloggers kan aansluiten en ik ook meer kans heb dat het bedrag ook daadwerkelijk binnenkomt.
+W7-007      | Platform Eigenaar | een aantal veiligheidstests (een test op query-injection) kunnen uitvoeren op mijn blog | ik mijn weblog beter bescherm tegen aanvallen
+W7-008      | Lezer       | uit meerdere talen kunnen kiezen | ik lezers uit verschillende landen mijn blog in hun eigen taal kan laten lezen
+W7-009      | Platform Eigenaar | vanuit de backend een backup van alle weblogs kunnen maken in de vorm van een database dump | ik backups heb die ik op een later moment terug kan plaatsen (importeren)
+W7-010      | Blogger     | vanuit mijn instellingen een backup van mijn eigen blog kunnen maken in een formaat dat ik later kan importeren in andere blogplatformen | ik makkelijk kan overstappen naar een ander blogplatform zonder mijn artikelen kwijt te raken.
 
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
-W7-F01      | Blogger     | kant-en-klare thema’s kunnen kiezen en toepassen voor de opmaak van mijn blog. | zodat ik snel en makkelijk een mooie layout kan toepassen op mijn blog
-W7-F02      | Lezer       | uit verschillende tekst groottes kunnen kiezen | zodat ik de tekstgrootte naar wens kan aanpassen zodat ik alles goed kan lezen
-W7-F03      | Platform eigenaar | 5 gratis thema’s aan bloggers ter beschikking stellen | zodat bloggers het gemak van kant-en-klare thema’s kunnen ervaren
-W7-F04      | Blogger     | externe media kunnen embedden tijdens het schrijven van mijn artikelen | zodat ik makkelijk en snel externe content kan gebruiken in mijn artikelen
-W7-F05      | Lezer       | bij bezoek vanaf mijn telefoon automatisch een mobiel versie van het blog geserveerd krijgen | zodat ik makkelijk en vlot onderweg het blog kan lezen
-W7-F06      | Lezer       | kunnen chatten met andere lezers van een artikel | zodat ik kan discussiëren met andere lezers
-W7-F07      | Lezer       | het blog lezen in een soepele en moderne vormgeving | zodat ik het lezen van het blog als plezier en fijn ervaar van deze tijd
+W7-F01      | Blogger     | kant-en-klare thema’s kunnen kiezen en toepassen voor de opmaak van mijn blog. | ik snel en makkelijk een mooie layout kan toepassen op mijn blog
+W7-F02      | Lezer       | uit verschillende tekst groottes kunnen kiezen | ik de tekstgrootte naar wens kan aanpassen zodat ik alles goed kan lezen
+W7-F03      | Platform eigenaar | 5 gratis thema’s aan bloggers ter beschikking stellen | ik bloggers het gemak van kant-en-klare thema’s kan laten ervaren
+W7-F04      | Blogger     | externe media kunnen embedden tijdens het schrijven van mijn artikelen | ik makkelijk en snel externe content kan gebruiken in mijn artikelen
+W7-F05      | Lezer       | bij bezoek vanaf mijn telefoon automatisch een mobiel versie van het blog geserveerd krijgen | ik makkelijk en vlot onderweg het blog kan lezen
+W7-F06      | Lezer       | kunnen chatten met andere lezers van een artikel | ik kan discussiëren met andere lezers
+W7-F07      | Lezer       | het blog lezen in een soepele en moderne vormgeving | ik het lezen van het blog als plezier en fijn ervaar van deze tijd
