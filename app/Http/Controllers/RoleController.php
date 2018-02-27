@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    use Authorizable;
-
     public function index() {
         $roles = Role::all();
         $permissions = Permission::all();

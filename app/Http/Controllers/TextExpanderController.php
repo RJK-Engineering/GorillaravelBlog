@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class TextExpanderController extends Controller
 {
-
     public function index()
     {
         $snippets = TextExpander::get();
