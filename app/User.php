@@ -8,8 +8,11 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
+    use HasRoles;
     use Notifiable;
 
     /**
