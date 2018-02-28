@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Authorizable;
 use App\Blog;
 use App\Post;
 use App\Category;
@@ -10,10 +11,6 @@ use Image;
 
 class PostController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth', ['except' => ['index', 'show', 'search', 'json']]);
-    }
-
     public function index() {
         $posts = Post::orderBy('id', 'desc')
             ->filter(request(['month', 'year']))

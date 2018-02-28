@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    <div class="error">
+        @include('flash::message')
+    </div>
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">Welcome to Gorillalaravel Platform </h1>
