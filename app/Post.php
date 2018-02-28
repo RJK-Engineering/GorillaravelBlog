@@ -1,13 +1,10 @@
 <?php
 
 namespace App;
-use Laravel\Scout\Searchable;
 use Carbon\Carbon;
 
 class Post extends Model
 {
-    use Searchable;
-
     public function comments() {
         return $this->hasMany(Comment::class);
     }
@@ -16,24 +13,28 @@ class Post extends Model
         return $this->belongsToMany(Category::class, 'post_categories');
     }
 
-    public function toSearchableArray() {
-        $array = $this->toArray();
-
-        // Customize array...
-
-        return $array;
-    }
-
     public function toggleCommentStatus() {
         return $this->comments_on_off = ! $this->comments_on_off;
     }
 
     public static function archives() {
-        return static::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) as published')
-                    ->groupBy('year', 'month')
-                    ->orderByRaw('min(created_at)')
-                    ->get()
-                    ->toArray();
+        $db = config('database')['default'];
+        if ($db == "mysql") {
+            $res = static::selectRaw(
+                'year(created_at) as year,' .
+                ' monthname(created_at) as month,' .
+                ' count(*) as published'
+            );
+        } elseif ($db == "pgsql") {
+            $res = static::selectRaw(
+                "to_char(created_at, 'YYYY') as year," .
+                " to_char(created_at, 'MM') as month," .
+                ' count(*) as published'
+            );
+        }
+        return $res->groupBy('year', 'month')
+            ->orderBy('year', 'month')
+            ->get()->toArray();
     }
 
     public function scopeFilter($query, $filters) {

@@ -1,10 +1,37 @@
 # Implementation
 
 Live version @ http://gorillaravelblog.herokuapp.com/
-- http://gorillaravelblog.herokuapp.com/post/create
+- http://gorillaravelblog.herokuapp.com/blogs/create
+- http://gorillaravelblog.herokuapp.com/posts/create
 - http://gorillaravelblog.herokuapp.com/categories/create
 
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
+
+```
+Prerequisites:
+PHP 7.2.1
+Composer
+MySql or other laravel compatible database software
+```
+```
+Install:
+Clone repository
+run composer install
+run php artisan migrate
+run php artisan db:seed
+```
+Implemented features week 6:
+- add image to post
+- js text expander
+- js categories menu without reload
+- home page with information about the blog platform
+- register and login functionality
+- multi user platform started
+- archives feature in the sidebar
+- edit post functionality
+- get new password by email
+- search function
+- add image to post
 
 # Excercise Week 5
 

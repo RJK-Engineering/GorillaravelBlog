@@ -4,7 +4,9 @@
     <article>
       <h2>
           {{ $post->title }}
-          <a class="material-icons" href="/posts/{{ $post->id }}/edit">edit</a>
+          @can('edit_posts')
+            <a class="material-icons" href="/posts/{{ $post->id }}/edit">edit</a>
+          @endcan
       </h2>
       @if ($post->post_thumbnail)
           <img class="float-right mr-3" style="width: 25vw" src="/uploads/{{ $post->post_thumbnail }}">

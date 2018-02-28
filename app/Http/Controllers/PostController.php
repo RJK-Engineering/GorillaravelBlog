@@ -3,40 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Authorizable;
+use App\Blog;
 use App\Post;
 use App\Category;
 use Image;
 
 class PostController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth', ['except' => ['index', 'show', 'search', 'json']]);
-    }
     public function index() {
         $posts = Post::orderBy('id', 'desc')
-                    ->filter(request(['month', 'year']))
-                    ->get();
+            ->filter(request(['month', 'year']))
+            ->get();
 
-        return view('posts.index', compact('posts', 'categories'));
+        return view('posts.index', compact('posts'));
     }
 
-    public function show(Post $post) {
+    public function show(Blog $blog, Post $post) {
         $comments = $post->comments()->get();
-        return view('posts.show', compact('post', 'comments'));
+        return view('posts.show', compact('blog', 'post', 'comments'));
     }
 
-    public function create() {
-        return view('posts.create');
+    public function create(Blog $blog) {
+        return view('posts.create', compact('blog'));
     }
 
     public function store(Request $request) {
         $this->validate(request(), [
+            'blog_id' => 'required',
             'title' => 'required',
             'body' => 'required',
             'category' => 'required',
             'post_thumbnail' => 'image|max:2000'
         ]);
         $post = Post::create([
+            'blog_id' => request('blog_id'),
             'title' => request('title'),
             'body' => request('body'),
         ]);
@@ -55,6 +56,10 @@ class PostController extends Controller
             $post->categories()->sync(request('category'));
         }
         return redirect('/');
+    }
+
+    public function edit(Post $post) {
+        return view('posts.edit', compact('post'));
     }
 
     public function update(Post $post, Request $request) {
@@ -79,6 +84,11 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
 
+    public function destroy(Post $post) {
+        $post->delete();
+        return back();
+    }
+
     public function toggleCommentStatus(Post $post) {
         $post->toggleCommentStatus();
         $post->save();
@@ -90,10 +100,6 @@ class PostController extends Controller
         $posts = Post::search($search_term)->get();
 
         return view('posts.index', compact('posts'));
-    }
-
-    public function edit(Post $post) {
-        return view('posts.edit', compact('post'));
     }
 
     public function json() {

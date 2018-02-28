@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('content')
+    <div class="error">
+        @include('flash::message')
+    </div>
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">Welcome to Gorillalaravel Platform </h1>
             <p class="lead">The place to start your own blog.</p>
-            <button type="button" class="btn btn-secondary btn-lg">Start your blog now!</button>
+            <button type="button" class="btn btn-secondary btn-lg" onclick="document.location='blogs'">Start your blog now!</button>
         </div>
     </div>
     <div class="list-group mb-5">

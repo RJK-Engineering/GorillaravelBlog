@@ -1,20 +1,21 @@
 <?php
 
-/* Auth Controllers */
+Route::view('/', 'home.welcome');
 
 Auth::routes();
+Route::get('/admin/roles', 'RoleController@index');
+Route::get('/admin/permissions', 'PermissionController@index');
 
-/* BlogController */
-
-Route::resource('blogs', 'BlogController');
-Route::get('/{blog}/posts', 'BlogController@posts');
-
-/* HomeController */
-
-Route::view('/', 'home.welcome');
-Route::get('/{blog}', 'HomeController@posts');
-
-/* PostController */
+// Route::group(['middleware' => ['permission:publish articles|edit articles']], function () {
+Route::middleware(['auth'])->group(function() {
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('blogs', 'BlogController');
+    Route::resource('permissions', 'PermissionController');
+});
+// Route::middleware(['permission:add_posts'])->group(function() {
+//     Route::get('blogs', 'BlogController@index');
+// });
 
 // get posts/search route only works when declared before resource posts routes
 Route::get('/posts/search', 'PostController@search');
@@ -23,12 +24,14 @@ Route::get('/posts/json', 'PostController@json');
 
 Route::resource('posts', 'PostController');
 Route::post('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
+Route::get('/posts/{blog}/create', 'PostController@create');
+Route::get('/posts/{blog}/edit', 'PostController@edit');
 
-/* CommentController */
+Route::get('/{blog}', 'HomeController@posts');
+Route::get('/{blog}/admin', 'Admin\PostController@index');
+Route::get('/{blog}/{post}', 'PostController@show');
 
 Route::resource('comments', 'CommentController');
-
-/* CategoryController */
 
 Route::resource('categories', 'CategoryController');
 Route::get('/categories/{category}/posts', 'CategoryController@posts');

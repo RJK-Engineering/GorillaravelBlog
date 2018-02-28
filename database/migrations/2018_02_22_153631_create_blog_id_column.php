@@ -13,7 +13,7 @@ class CreateBlogIdColumn extends Migration
      */
     public function up() {
         Schema::table('posts', function($table) {
-            $table->integer('blog_id')->after('id');
+            $table->integer('blog_id')->after('id')->nullable();
         });
     }
 
