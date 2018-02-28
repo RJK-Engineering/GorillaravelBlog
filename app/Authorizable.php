@@ -5,9 +5,9 @@ namespace App;
 trait Authorizable
 {
     private $abilities = [
-        'index' => 'view',
+        // 'index' => 'view',
         'edit' => 'edit',
-        'show' => 'view',
+        // 'show' => 'view',
         'update' => 'edit',
         'create' => 'add',
         'store' => 'add',
@@ -16,7 +16,7 @@ trait Authorizable
     ];
 
     /**
-     * Override of callAction to perform the authorization before
+     * Override of callAction to perform the authorization
      *
      * @param $method
      * @param $parameters
@@ -24,7 +24,7 @@ trait Authorizable
      */
     public function callAction($method, $parameters)
     {
-        if( $ability = $this->getAbility($method) ) {
+        if ( $ability = $this->getAbility($method) ) {
             $this->authorize($ability);
         }
 
@@ -48,6 +48,7 @@ trait Authorizable
     {
         $this->abilities = $abilities;
     }
+
 }
 
 ?>
