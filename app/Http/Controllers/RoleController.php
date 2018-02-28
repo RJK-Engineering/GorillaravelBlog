@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class RoleController extends Controller
             flash('Role Added');
         }
 
-        return redirect()->back();
+        return back();
     }
 
     public function update(Request $request, $id) {
@@ -29,7 +30,7 @@ class RoleController extends Controller
             // admin role has everything
             if ($role->name === 'Admin') {
                 $role->syncPermissions(Permission::all());
-                return redirect()->route('roles.index');
+                return route('roles.index');
             }
 
             $permissions = $request->get('permissions', []);
@@ -39,7 +40,7 @@ class RoleController extends Controller
             flash()->error( 'Role with id '. $id .' note found.');
         }
 
-        return redirect()->route('roles.index');
+        return route('roles.index');
     }
 
 }
