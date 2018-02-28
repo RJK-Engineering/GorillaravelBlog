@@ -27,6 +27,7 @@ Route::get('/posts/{blog}/edit', 'PostController@edit');
 
 /* HomeController */
 
+Route::get('/system/actions', 'HomeController@actions');
 Route::get('/{blog}', 'HomeController@posts');
 Route::get('/{blog}/admin', 'Admin\PostController@index');
 Route::get('/{blog}/{post}', 'PostController@show');
