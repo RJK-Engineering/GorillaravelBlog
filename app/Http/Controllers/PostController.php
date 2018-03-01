@@ -12,11 +12,19 @@ use Image;
 class PostController extends Controller
 {
     public function index() {
-        $posts = Post::orderBy('id', 'desc')
+        $posts = Post::orderBy('created_at', 'desc')
             ->filter(request(['month', 'year']))
             ->get();
 
         return view('posts.index', compact('posts'));
+    }
+
+    public function latest($limit = 10) {
+        $posts = Post::orderBy('created_at', 'desc')
+            ->take($limit)
+            ->get();
+
+        return view('posts.latest', compact('posts'));
     }
 
     public function show(Blog $blog, Post $post) {
@@ -103,7 +111,7 @@ class PostController extends Controller
     }
 
     public function json() {
-        return Post::orderBy('id', 'desc')->get();
+        return Post::orderBy('created_at', 'desc')->get();
     }
 
 }
