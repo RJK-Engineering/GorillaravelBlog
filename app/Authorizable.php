@@ -10,7 +10,7 @@ trait Authorizable
         // 'show' => 'view',
         'update' => 'edit',
         'create' => 'add',
-        'store' => 'add',
+        // 'store' => 'add',
         'destroy' => 'delete',
         'toggleCommentStatus' => 'lock_comments',
     ];
