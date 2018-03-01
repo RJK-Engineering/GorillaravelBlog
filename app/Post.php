@@ -1,23 +1,30 @@
 <?php
 
 namespace App;
+
+use App\Blog;
+
 use Carbon\Carbon;
 
 class Post extends Model
 {
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function categories() {
+    public function categories()
+    {
         return $this->belongsToMany(Category::class, 'post_categories');
     }
 
-    public function toggleCommentStatus() {
+    public function toggleCommentStatus()
+    {
         return $this->comments_on_off = ! $this->comments_on_off;
     }
 
-    public static function archives() {
+    public static function archives()
+    {
         $db = config('database')['default'];
         if ($db == "mysql") {
             $res = static::selectRaw(
@@ -37,7 +44,8 @@ class Post extends Model
             ->get()->toArray();
     }
 
-    public function scopeFilter($query, $filters) {
+    public function scopeFilter($query, $filters)
+    {
         if (!empty($filters)) {
             if ($month = $filters['month']) {
                 $query->whereMonth('created_at', Carbon::parse($month)->month);
@@ -46,6 +54,16 @@ class Post extends Model
                 $query->whereYear('created_at', $year);
             }
         }
+    }
+
+    public function blog()
+    {
+        return $this->belongsTo(Blog::class)->first();
+    }
+
+    public function blogger()
+    {
+        return $this->blog()->user();
     }
 
 }
