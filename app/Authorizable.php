@@ -6,13 +6,13 @@ trait Authorizable
 {
     private $abilities = [
         // 'index' => 'view',
-        'edit' => 'edit',
+        // 'edit' => 'edit',
         // 'show' => 'view',
-        'update' => 'edit',
-        'create' => 'add',
+        // 'update' => 'edit',
+        // 'create' => 'add',
         // 'store' => 'add',
-        'destroy' => 'delete',
-        'toggleCommentStatus' => 'lock_comments',
+        // 'destroy' => 'delete',
+        // 'toggleCommentStatus' => 'lock_comments',
     ];
 
     /**

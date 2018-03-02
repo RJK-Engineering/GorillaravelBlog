@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Authorizable;
 use App\Blog;
 use App\Post;
 use App\Category;
+
+use App\Mail\NewPostMail;
+
 use Image;
 
 class PostController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $posts = Post::orderBy('created_at', 'desc')
             ->filter(request(['month', 'year']))
             ->get();
@@ -19,7 +24,8 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function latest($limit = 10) {
+    public function latest($limit = 10)
+    {
         $posts = Post::orderBy('created_at', 'desc')
             ->take($limit)
             ->get();
@@ -27,16 +33,19 @@ class PostController extends Controller
         return view('posts.latest', compact('posts'));
     }
 
-    public function show(Blog $blog, Post $post) {
+    public function show(Blog $blog, Post $post)
+    {
         $comments = $post->comments()->get();
         return view('posts.show', compact('blog', 'post', 'comments'));
     }
 
-    public function create(Blog $blog) {
+    public function create(Blog $blog)
+    {
         return view('posts.create', compact('blog'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validate(request(), [
             'blog_id' => 'required',
             'title' => 'required',
@@ -63,18 +72,31 @@ class PostController extends Controller
         if (sizeof(request('category'))) {
             $post->categories()->sync(request('category'));
         }
+
+        $this->_sendNewPostMail($post);
+
         return redirect('/');
     }
 
-    public function edit(Post $post) {
+    private function _sendNewPostMail(Post $post)
+    {
+        $blog = $post->blog();
+        foreach ($blog->subscriptions as $user) {
+            \Mail::to($user)->send(new NewPostMail($user, $post));
+        }
+    }
+
+    public function edit(Post $post)
+    {
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Post $post, Request $request) {
+    public function update(Post $post, Request $request)
+    {
         $input = request()->only('title', 'body');
         $post->update($input);
 
-        if( $request->hasFile('post_thumbnail') ) {
+        if ( $request->hasFile('post_thumbnail') ) {
             $post_thumbnail     = $request->file('post_thumbnail');
             $filename           = time() . '.' . $post_thumbnail->getClientOriginalExtension();
 
@@ -92,25 +114,29 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
 
-    public function destroy(Post $post) {
+    public function destroy(Post $post)
+    {
         $post->delete();
         return back();
     }
 
-    public function toggleCommentStatus(Post $post) {
+    public function toggleCommentStatus(Post $post)
+    {
         $post->toggleCommentStatus();
         $post->save();
         return back();
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $search_term = request('q');
         $posts = Post::search($search_term)->get();
 
         return view('posts.index', compact('posts'));
     }
 
-    public function json() {
+    public function json()
+    {
         return Post::orderBy('created_at', 'desc')->get();
     }
 
