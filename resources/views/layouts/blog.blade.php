@@ -23,6 +23,7 @@
 
         <div class="col" id="posts">
 
+            @yield ('blog_subscribe')
             @yield ('blog_posts')
 
         </div>

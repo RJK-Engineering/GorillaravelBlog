@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -13,7 +14,8 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         $blogs = Blog::all();
         return view('blogs.index', compact('blogs'));
     }
@@ -23,7 +25,8 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         return view('blogs.create');
     }
 
@@ -33,7 +36,8 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validate(request(), [
             'user_id' => 'required',
             'title' => 'required',
@@ -51,7 +55,8 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog) {
+    public function show(Blog $blog)
+    {
         return view('blogs.show', compact('blog'));
     }
 
@@ -61,7 +66,8 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog) {
+    public function edit(Blog $blog)
+    {
         return view('blogs.edit', compact('blog'));
     }
 
@@ -72,7 +78,8 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog) {
+    public function update(Request $request, Blog $blog)
+    {
         $this->validate(request(), [
             'user_id' => 'required',
             'title' => 'required',
@@ -90,9 +97,26 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog) {
+    public function destroy(Blog $blog)
+    {
         $blog->delete();
         return $this->index();
     }
 
+    public function toggleSubscription()
+    {
+        $this->validate(request(), [
+            'blog_id' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $blog = Blog::find(request('blog_id'));
+        $user = User::find(request('user_id'));
+        $blog->toggleSubscription($user);
+
+        return back();
+    }
+
 }
+
+?>

@@ -1,5 +1,20 @@
 @extends ('layouts.blog')
 
+@section('blog_subscribe')
+  <form action="{{ route('toggleSubscription') }}" method="POST">
+    @csrf
+    <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+    <button class="btn">
+      @if ($blog->subscribed(Auth::user()))
+        Unsubscribe
+      @else
+        Subscribe
+      @endif
+    </button>
+  </form>
+@endsection
+
 @section('blog_posts')
   @foreach ($posts as $post)
     <article @if ($post->post_thumbnail) class="clearfix" @endif>
