@@ -41,7 +41,11 @@ class PostController extends Controller
 
     public function create(Blog $blog)
     {
-        return view('posts.create', compact('blog'));
+        if ($blog->posts()->count() < config('app.max_free_posts')) {
+            return view('posts.create', compact('blog'));
+        } else {
+            return view('pay.index', compact('blog'));
+        }
     }
 
     public function store(Request $request)

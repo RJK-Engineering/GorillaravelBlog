@@ -14,8 +14,8 @@ In C:\xampp\php\php.ini, extension=sqlite3 needs to be uncommented (needed for s
 .env
 SCOUT_DRIVER=tntsearch
 ------
-jack's github - vue js router
---------
-
 https://laravel.com/docs/5.5/passport
 https://github.com/Jack-JP/Laravel-Vuejs-VueRouter
+
+---
+why model-has-roles???
