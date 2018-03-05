@@ -8,12 +8,6 @@ php artisan make:model Class --migration --resource --controller
 views (not generated): /resources/...
 
 ----------
-Install dependencies: composer install
-In C:\xampp\php\php.ini, extension=sqlite3 needs to be uncommented (needed for search functionality)
-
-.env
-SCOUT_DRIVER=tntsearch
-------
 https://laravel.com/docs/5.5/passport
 https://github.com/Jack-JP/Laravel-Vuejs-VueRouter
 
