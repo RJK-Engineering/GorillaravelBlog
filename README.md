@@ -4,6 +4,18 @@ Live version @ http://gorillaravelblog/
 
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 
+# Prerequisites
+
+* Webserver + PHP 7.2.1
+* Composer
+* MySql or Postgres
+
+# Installation
+
+See: [INSTALL](INSTALL)
+
+# Done
+
 Implemented features week 6:
 - add image to post
 - js text expander
@@ -16,16 +28,6 @@ Implemented features week 6:
 - get new password by email
 - search function
 - add image to post
-
-# Prerequisites
-
-* Webserver + PHP 7.2.1
-* Composer
-* MySql or other Postgres
-
-# Installation
-
-See: [INSTALL](INSTALL)
 
 # Excercise Week 5
 
