@@ -1,25 +1,9 @@
 # Implementation
 
-Live version @ http://gorillaravelblog.herokuapp.com/
-- http://gorillaravelblog.herokuapp.com/blogs/create
-- http://gorillaravelblog.herokuapp.com/posts/create
-- http://gorillaravelblog.herokuapp.com/categories/create
+Live version @ http://gorillaravelblog/
 
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 
-```
-Prerequisites:
-PHP 7.2.1
-Composer
-MySql or other laravel compatible database software
-```
-```
-Install:
-Clone repository
-run composer install
-run php artisan migrate
-run php artisan db:seed
-```
 Implemented features week 6:
 - add image to post
 - js text expander
@@ -32,6 +16,16 @@ Implemented features week 6:
 - get new password by email
 - search function
 - add image to post
+
+# Prerequisites
+
+* Webserver + PHP 7.2.1
+* Composer
+* MySql or other Postgres
+
+# Installation
+
+See: [INSTALL](INSTALL)
 
 # Excercise Week 5
 
