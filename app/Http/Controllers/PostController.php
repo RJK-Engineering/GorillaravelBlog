@@ -8,11 +8,10 @@ use App\Authorizable;
 
 use App\Blog;
 use App\Category;
+use App\User;
 use App\Post;
 use App\User;
-
 use App\Mail\NewPostMail;
-
 use Image;
 use Illuminate\Support\Facades\Auth;
 
@@ -85,16 +84,16 @@ class PostController extends Controller
         }
 
         $user_id = Auth::id();
-        $blog = Blog::where('user_id', $user_id)->get();
-        // dd($blog);
-        $postCount = Post::where('blog_id', $blog[0]->id)->count();
+        $blog = Blog::where('user_id', $user_id)->first();
+        $postCount = Post::where('blog_id', $blog->id)->count();
         if ($postCount > 4)
         {
             User::findOrFail($user_id)->revokePermissionTo('add_posts');
         }
       
         $this->_sendNewPostMail($post);
-        return redirect('/' . $blog[0]->title);
+      
+        return redirect('/' . $blog->title);
     }
 
     private function _sendNewPostMail(Post $post)
