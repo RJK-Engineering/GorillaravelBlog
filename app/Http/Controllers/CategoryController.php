@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Blog;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -20,8 +21,12 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    public function posts(Category $category) {
-        $posts = $category->posts()->get();
+    public function posts(Blog $blog, Category $category) {
+        $posts = $category->posts()
+        ->where('blog_id', $blog->id)
+        ->orderBy('id', 'desc')
+        ->get();
+
         return $posts;
     }
 
