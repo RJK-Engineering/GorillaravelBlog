@@ -33,7 +33,7 @@
 		</div>
         <hr>
 
-        <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+        <input type="hidden" id="blog_id" name="blog_id" value="{{ $blog->id }}">
         <input type="submit" value="Submit blog post" class="btn">
     </form>
 
