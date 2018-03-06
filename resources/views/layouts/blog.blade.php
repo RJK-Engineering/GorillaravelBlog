@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="text-center mt-5 mb-4">
-        GorillaBlog
+        {{ $blog->title }}
         @can('add_posts')
             <a class="material-icons" href="/{{ $blog->title }}/posts/create" title="New Post">note_add</a>
         @endcan
