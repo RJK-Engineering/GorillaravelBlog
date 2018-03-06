@@ -4,7 +4,7 @@
     <h1 class="text-center mt-5 mb-4">
         GorillaBlog
         @can('add_posts')
-            <a class="material-icons" href="/posts/{{ $blog->title }}/create" title="New Post">note_add</a>
+            <a class="material-icons" href="/{{ $blog->title }}/posts/create" title="New Post">note_add</a>
         @endcan
     </h1>
     <div class="row">
@@ -13,7 +13,7 @@
 
                 @include ('posts.search')
                 <span class="px-3 py-2"><u>Categories</u></span>
-                <a href="/posts/json" id="ALL" class="nav-link category-link">All</a>
+                <a href="/{{  $blog->title  }}/posts/json" id="ALL" class="nav-link category-link">All</a>
 
                 @include ('category.index')
                 <span class="px-3 py-2"><u>Archives</u></span>
