@@ -133,9 +133,11 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $search_term = request('q');
-        $posts = Post::search($search_term)->get();
+        $blog_id = request('blog');
+        $blog = Blog::findOrFail($blog_id);
+        $posts = Post::search($search_term)->where('blog_id', request('blog'))->get();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'blog'));
     }
 
     public function json(Blog $blog) {

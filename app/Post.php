@@ -5,10 +5,13 @@ namespace App;
 use App\Blog;
 
 use Carbon\Carbon;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    public function comments()
+    use Searchable;
+
+    public function comments() 
     {
         return $this->hasMany(Comment::class);
     }
