@@ -5,18 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Authorizable;
+
 use App\Blog;
-use App\Post;
 use App\Category;
+use App\Post;
+use App\User;
 
 use App\Mail\NewPostMail;
 
 use Image;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function index()
+    public function __construct()
     {
+        $this->middleware(['permission:add_posts'], ['only' => ['create', 'store']]);
+    }
+
+    public function index() {
         $posts = Post::orderBy('created_at', 'desc')
             ->filter(request(['month', 'year']))
             ->get();
@@ -77,8 +84,17 @@ class PostController extends Controller
             $post->categories()->sync(request('category'));
         }
 
+        $user_id = Auth::id();
+        $blog = Blog::where('user_id', $user_id)->get();
+        // dd($blog);
+        $postCount = Post::where('blog_id', $blog[0]->id)->count();
+        if ($postCount > 4)
+        {
+            User::findOrFail($user_id)->revokePermissionTo('add_posts');
+        }
+      
         $this->_sendNewPostMail($post);
-        return back();
+        return redirect('/' . $blog[0]->title);
     }
 
     private function _sendNewPostMail(Post $post)
