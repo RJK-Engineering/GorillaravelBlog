@@ -55,7 +55,8 @@ class PostController extends Controller
         if (sizeof(request('category'))) {
             $post->categories()->sync(request('category'));
         }
-        return redirect('/');
+
+        return back();
     }
 
     public function edit(Post $post) {
@@ -102,8 +103,8 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function json() {
-        return Post::orderBy('id', 'desc')->get();
+    public function json(Blog $blog) {
+        return $blog->posts()->orderBy('id', 'desc')->get();
     }
 
 }
