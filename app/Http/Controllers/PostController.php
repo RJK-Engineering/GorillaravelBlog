@@ -78,8 +78,7 @@ class PostController extends Controller
         }
 
         $this->_sendNewPostMail($post);
-
-        return redirect('/');
+        return back();
     }
 
     private function _sendNewPostMail(Post $post)
@@ -139,9 +138,8 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function json()
-    {
-        return Post::orderBy('created_at', 'desc')->get();
+    public function json(Blog $blog) {
+        return $blog->posts()->orderBy('id', 'desc')->get();
     }
 
 }
