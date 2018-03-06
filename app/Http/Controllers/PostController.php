@@ -64,14 +64,14 @@ class PostController extends Controller
         }
 
         $user_id = Auth::id();
-        $blog = Blog::where('user_id', $user_id)->get();
+        $blog = Blog::where('user_id', $user_id)->first();
         // dd($blog);
-        $postCount = Post::where('blog_id', $blog[0]->id)->count();
+        $postCount = Post::where('blog_id', $blog->id)->count();
         if ($postCount > 4)
         {
             User::findOrFail($user_id)->revokePermissionTo('add_posts');
         }
-        return redirect('/' . $blog[0]->title);
+        return redirect('/' . $blog->title);
     }
 
     public function edit(Post $post) {
