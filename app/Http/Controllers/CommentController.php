@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\Http\Requests\CheckIdComments;
 
 class CommentController extends Controller
 {
@@ -32,7 +33,7 @@ class CommentController extends Controller
         return back();
     }
 
-    public function destroy(Comment $comment) {
+    public function destroy(Comment $comment, CheckIdComments $request) {
         $comment->delete();
         return back();
     }
