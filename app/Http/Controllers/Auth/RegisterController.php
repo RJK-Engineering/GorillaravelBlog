@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/blogs/create';
 
     /**
      * Create a new controller instance.
@@ -69,6 +69,7 @@ class RegisterController extends Controller
         ]);
         $user->assignRole('User');
         $user->givePermissionTo('add_blogs');
+        $user->givePermissionTo('add_posts');
         return $user;
     }
 }
