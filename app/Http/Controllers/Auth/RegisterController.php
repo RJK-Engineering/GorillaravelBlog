@@ -69,6 +69,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        $user->assignRole('User');
+        $user->givePermissionTo('add_blogs');
 
         Mail::to($user)->send(new WelcomeMail($user));
 

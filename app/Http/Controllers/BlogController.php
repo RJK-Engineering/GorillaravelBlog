@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:add_blogs'], ['only' => ['create', 'store']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +50,9 @@ class BlogController extends Controller
             'user_id' => request('user_id'),
             'title' => request('title'),
         ]);
-        return $this->show($blog);
+        $user = User::findOrFail(request('user_id'));
+        $user->revokePermissionTo('add_blogs');
+        return redirect('/' . $blog->title);
     }
 
     /**

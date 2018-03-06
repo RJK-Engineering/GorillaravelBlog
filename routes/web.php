@@ -23,14 +23,14 @@ Route::middleware(['auth'])->group(function() {
 // });
 
 // get posts/search route only works when declared before resource posts routes
-Route::get('/posts/search', 'PostController@search');
-Route::get('/posts/{post}/edit', 'PostController@edit');
-Route::get('/posts/json', 'PostController@json');
+Route::get('/{blog}/posts/search', 'PostController@search');
+Route::get('/{blog}/posts/{post}/edit', 'PostController@edit');
+Route::get('/{blog}/posts/json', 'PostController@json');
 
-Route::resource('posts', 'PostController');
-Route::post('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
-Route::get('/posts/{blog}/create', 'PostController@create');
-Route::get('/posts/{blog}/edit', 'PostController@edit');
+Route::resource('/posts', 'PostController');
+Route::post('/{blog}/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
+Route::get('/{blog}/posts/create', 'PostController@create');
+Route::get('/{blog}/posts/edit', 'PostController@edit');
 
 Route::get('/{blog}', 'HomeController@posts');
 Route::get('/{blog}/admin', 'Admin\PostController@index');
@@ -39,7 +39,7 @@ Route::get('/{blog}/{post}', 'PostController@show');
 Route::resource('comments', 'CommentController');
 
 Route::resource('categories', 'CategoryController');
-Route::get('/categories/{category}/posts', 'CategoryController@posts');
+Route::get('/{blog}/{category}/posts', 'CategoryController@posts');
 
 Route::view('/snippets', 'TextExpander.create');
 Route::post('/snippets/create', 'TextExpanderController@store');
