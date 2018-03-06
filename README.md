@@ -1,25 +1,21 @@
 # Implementation
 
-Live version @ http://gorillaravelblog.herokuapp.com/
-- http://gorillaravelblog.herokuapp.com/blogs/create
-- http://gorillaravelblog.herokuapp.com/posts/create
-- http://gorillaravelblog.herokuapp.com/categories/create
+Live version @ http://gorillaravelblog/
 
 Trello board @ https://trello.com/b/wB3TUVdD/laravel-blog-heiner-en-rob
 
-```
-Prerequisites:
-PHP 7.2.1
-Composer
-MySql or other laravel compatible database software
-```
-```
-Install:
-Clone repository
-run composer install
-run php artisan migrate
-run php artisan db:seed
-```
+# Prerequisites
+
+* Webserver + PHP 7.2.1
+* Composer
+* MySql or Postgres
+
+# Installation
+
+See: [INSTALL](INSTALL)
+
+# Done
+
 Implemented features week 6:
 - add image to post
 - js text expander

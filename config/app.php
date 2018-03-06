@@ -215,4 +215,6 @@ return [
 
     ],
 
+    'max_free_posts' => 5,
+
 ];

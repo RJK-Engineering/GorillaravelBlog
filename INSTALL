@@ -1,0 +1,23 @@
+Install apache + mysql (xampp)
+
+$ git clone https://github.com/RJK-Engineering/GorillaravelBlog
+
+Install composer
+
+$ composer install
+(asks to change php.ini)
+
+Copy conf/httpd-gorillaravelblog.conf to apache conf dir
+Add to httpd.conf: Include conf/httpd-gorillaravelblog.conf
+
+Add to hosts: 127.0.0.1 gorillaravelblog
+(c:\Windows\Sysnative\drivers\etc\hosts)
+
+Copy .env
+
+Create gorillaravelblog schema in mysql
+Create gorillablog user in mysql, grant privileges on gorillaravelblog
+
+$ php artisan key:generate
+$ php artisan db:migrate
+$ php artisan db:seed

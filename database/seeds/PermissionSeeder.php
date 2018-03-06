@@ -31,10 +31,10 @@ class PermissionSeeder extends Seeder
         $this->command->info('Default Permissions added.');
 
         // Confirm roles needed
-        if ($this->command->confirm('Create Roles for user, default is admin and user? [y|N]', true)) {
+        if ($this->command->confirm('Create Roles for user, default is admin and user?', true)) {
 
             // Ask for roles from input
-            $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Admin,User');
+            $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Admin,Blogger');
 
             // Explode roles
             $roles_array = explode(',', $input_roles);
