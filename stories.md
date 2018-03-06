@@ -54,7 +54,7 @@ W6-016      | Lezer       | me abonneren op een blog en krijg ik een email als e
 
 User Story  | Als een ... | wil ik ... | zodat ...
 ----------- | ----------- | ---------- | ---------
-W7-001      | Platform Eigenaar | maandelijks geld gaan vragen voor het hosten van een blog voor een blogger. Bloggers kunnen gratis 5 artikelen plaatsen om het platform te testen. Indien je meer artikelen wilt plaatsen betaal je eenmalig 9,99 euro | ik inkomsten kan genereren om de ontwikkelen en hosting van het platform te kunnen betalen.
+W7-001      | Platform Eigenaar | maandelijks geld gaan vragen voor het hosten van een blog voor een blogger. Bloggers kunnen gratis 5 artikelen plaatsen om het platform te testen. Indien je meer artikelen wilt plaatsen betaal je eenmalig 9,99 euro | ik inkomsten kan genereren om de ontwikkeling en hosting van het platform te kunnen betalen.
 W7-002      | Blogger     | eerst gratis vijf artikelen kunnen plaatsen | ik het platform kan uitproberen
 W7-003      | Blogger     | mijzelf kunnen aanmelden voor de betaalde dienst. Het enige dat ik hoef door te geven zijn mijn bankgegevens. | ik meer dan vijf artikelen kan gaan plaatsen
 W7-004      | Platform Eigenaar | 1x per maand een Excel spreadsheet kunnen genereren die ik kan gebruiken om het maandelijkse incasso bestand voor de bank te kunnen maken. Ik maar hiervoor gebruik van de website sepatool.nl die het ​echte​ incasso bestand maakt | ik geld kan incasseren
