@@ -22,13 +22,13 @@ Route::middleware(['auth'])->group(function() {
 //     Route::get('blogs', 'BlogController@index');
 // });
 
+Route::post('/{blog}/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
 // get posts/search route only works when declared before resource posts routes
 Route::get('/{blog}/posts/search', 'PostController@search');
 Route::get('/{blog}/posts/{post}/edit', 'PostController@edit');
 Route::get('/{blog}/posts/json', 'PostController@json');
 
-Route::resource('/posts', 'PostController');
-Route::post('/{blog}/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
+Route::resource('/{blog}/posts', 'PostController');
 Route::get('/{blog}/posts/create', 'PostController@create');
 Route::get('/{blog}/posts/edit', 'PostController@edit');
 
