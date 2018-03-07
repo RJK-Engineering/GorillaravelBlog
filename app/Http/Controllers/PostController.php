@@ -10,7 +10,6 @@ use App\Blog;
 use App\Category;
 use App\User;
 use App\Post;
-use App\User;
 use App\Mail\NewPostMail;
 use Image;
 use Illuminate\Support\Facades\Auth;
