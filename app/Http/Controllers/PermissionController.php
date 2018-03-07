@@ -13,7 +13,8 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        $permissions = Permission::orderBy('name', 'asc')->get();
+        return view('permission.index', compact('permissions'));
     }
 
     /**
