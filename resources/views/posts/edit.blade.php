@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="mt-5 mb-4">Edit blog post</h1>
-    <form method="post" enctype="multipart/form-data" action="/posts/{{ $post->id }}" class="mb-5" >
+    <form method="post" enctype="multipart/form-data" action="/{{ $blog->title }}/posts/{{ $post->id }}" class="mb-5" >
 
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
