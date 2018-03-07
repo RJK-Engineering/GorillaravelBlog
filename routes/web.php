@@ -4,9 +4,6 @@ Route::view('/', 'home.welcome');
 
 Auth::routes();
 
-Route::get('/admin/roles', 'RoleController@index');
-Route::get('/admin/permissions', 'PermissionController@index');
-
 Route::get('/posts/latest', 'PostController@latest');
 
 Route::post('/blogs/subscribe', 'BlogController@toggleSubscription')->name('toggleSubscription');
