@@ -4,8 +4,8 @@
     <article>
       <h2>
           {{ $post->title }}
-          @can('edit_posts')
-            <a class="material-icons" href="/posts/{{ $post->id }}/edit">edit</a>
+          @if(Auth::user()->can('edit_posts') && Auth::user()->id == $blog->user_id)
+            <a class="material-icons" href="/{{ $blog->title }}/posts/{{ $post->id }}/edit">edit</a>
           @endcan
       </h2>
       @if ($post->post_thumbnail)
