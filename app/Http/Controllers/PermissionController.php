@@ -37,8 +37,11 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [ 'name' => 'required' ]);
-        $perm = Permission::create(['name' => request('name')]);
-        return redirect(route('permissions.index'));
+        $perm = Permission::create([ 'name' => request('name') ]);
+
+        session()->flash('alert-success',
+            'Category added: ' . request('name'));
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -49,7 +52,7 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        //
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -83,6 +86,10 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        session()->flash('alert-success',
+            'Category deleted: ' . $permission->name);
+        return back();
     }
+
 }
