@@ -11,7 +11,7 @@ class Post extends Model
 {
     use Searchable;
 
-    public function comments() 
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }

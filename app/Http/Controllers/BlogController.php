@@ -6,6 +6,7 @@ use App\Blog;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\CheckIdBlogs;
 
 class BlogController extends Controller
 {
@@ -72,7 +73,7 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Blog $blog, CheckIdBlogs $request)
     {
         return view('blogs.edit', compact('blog'));
     }
@@ -84,7 +85,7 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Blog $blog, CheckIdBlogs $request)
     {
         $this->validate(request(), [
             'user_id' => 'required',
@@ -103,7 +104,7 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(Blog $blog, CheckIdBlogs $request)
     {
         $blog->delete();
         return $this->index();

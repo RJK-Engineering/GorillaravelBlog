@@ -13,6 +13,7 @@ use App\Post;
 use App\Mail\NewPostMail;
 use Image;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CheckIdPosts;
 
 class PostController extends Controller
 {
@@ -44,7 +45,7 @@ class PostController extends Controller
         return view('posts.show', compact('blog', 'post', 'comments'));
     }
 
-    public function create(Blog $blog)
+    public function create(Blog $blog, CheckIdPosts $request)
     {
         if ($blog->posts()->count() < config('app.max_free_posts')) {
             return view('posts.create', compact('blog'));
@@ -53,7 +54,7 @@ class PostController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(CheckIdPosts $request)
     {
         $this->validate(request(), [
             'blog_id' => 'required',
@@ -103,12 +104,12 @@ class PostController extends Controller
         }
     }
 
-    public function edit(Post $post)
+    public function edit(Blog $blog, Post $post)
     {
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', compact('post', 'blog'));
     }
 
-    public function update(Post $post, Request $request)
+    public function update(Blog $blog, Post $post, CheckIdPosts $request)
     {
         $input = request()->only('title', 'body');
         $post->update($input);
@@ -128,16 +129,16 @@ class PostController extends Controller
             $post->categories()->sync($input['category']);
         }
 
-        return redirect('/posts/' . $post->id);
+        return redirect('/' . $blog->title . '/posts/' . $post->id);
     }
 
-    public function destroy(Post $post)
+    public function destroy(Post $post, CheckIdPosts $request)
     {
         $post->delete();
         return back();
     }
 
-    public function toggleCommentStatus(Post $post)
+    public function toggleCommentStatus(Blog $blog, Post $post, CheckIdPosts $request)
     {
         $post->toggleCommentStatus();
         $post->save();
