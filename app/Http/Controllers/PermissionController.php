@@ -12,7 +12,8 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         $permissions = Permission::orderBy('name', 'asc')->get();
         return view('permission.index', compact('permissions'));
     }
@@ -22,8 +23,9 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        //
+    public function create()
+    {
+        return view('permission.create');
     }
 
     /**
@@ -32,8 +34,11 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        //
+    public function store(Request $request)
+    {
+        $this->validate(request(), [ 'name' => 'required' ]);
+        $perm = Permission::create(['name' => request('name')]);
+        return redirect(route('permissions.index'));
     }
 
     /**
@@ -42,7 +47,8 @@ class PermissionController extends Controller
      * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show(Permission $permission) {
+    public function show(Permission $permission)
+    {
         //
     }
 
@@ -52,7 +58,8 @@ class PermissionController extends Controller
      * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permission $permission) {
+    public function edit(Permission $permission)
+    {
         //
     }
 
@@ -63,7 +70,8 @@ class PermissionController extends Controller
      * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission) {
+    public function update(Request $request, Permission $permission)
+    {
         //
     }
 
@@ -73,7 +81,8 @@ class PermissionController extends Controller
      * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission) {
+    public function destroy(Permission $permission)
+    {
         //
     }
 }
