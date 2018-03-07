@@ -12,6 +12,6 @@
             <input class="form-control" id="name" placeholder="Enter the name here" name="name">
         </div>
 
-        <input class="btn" type="submit" value="Submit new permission">
+        <input class="btn" type="submit" value="Add new permission">
     </form>
 @endsection
