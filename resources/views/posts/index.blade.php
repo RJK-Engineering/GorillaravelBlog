@@ -19,7 +19,7 @@
   @foreach ($posts as $post)
     <article @if ($post->post_thumbnail) class="clearfix" @endif>
       <h2>
-        <a href="/posts/{{ $post->id }}">
+        <a href="/{{ $blog->title }}/posts/{{ $post->id }}">
           {{ $post->title }}
         </a>
       </h2>
