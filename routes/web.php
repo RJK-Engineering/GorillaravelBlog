@@ -28,7 +28,7 @@ Route::get('/{blog}/posts/{post}/edit', 'PostController@edit');
 Route::get('/{blog}/posts/json', 'PostController@json');
 
 Route::resource('/posts', 'PostController');
-Route::post('/{blog}/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
+Route::post('/posts/{post}/toggleCommentStatus', 'PostController@toggleCommentStatus');
 Route::get('/{blog}/posts/create', 'PostController@create');
 Route::get('/{blog}/posts/edit', 'PostController@edit');
 
