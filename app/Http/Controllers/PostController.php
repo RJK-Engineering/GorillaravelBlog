@@ -90,9 +90,9 @@ class PostController extends Controller
         {
             User::findOrFail($user_id)->revokePermissionTo('add_posts');
         }
-      
+
         $this->_sendNewPostMail($post);
-      
+
         return redirect('/' . $blog->title);
     }
 
@@ -138,7 +138,7 @@ class PostController extends Controller
         return back();
     }
 
-    public function toggleCommentStatus(Post $post)
+    public function toggleCommentStatus(Post $post, CheckIdComments $request)
     {
         $post->toggleCommentStatus();
         $post->save();

@@ -11,7 +11,7 @@ class Post extends Model
 {
     use Searchable;
 
-    public function comments() 
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
@@ -21,7 +21,7 @@ class Post extends Model
         return $this->belongsToMany(Category::class, 'post_categories');
     }
 
-    public function toggleCommentStatus()
+    public function toggleCommentStatus(CheckIdComments $request)
     {
         return $this->comments_on_off = ! $this->comments_on_off;
     }
