@@ -21,7 +21,7 @@ class Post extends Model
         return $this->belongsToMany(Category::class, 'post_categories');
     }
 
-    public function toggleCommentStatus(CheckIdComments $request)
+    public function toggleCommentStatus()
     {
         return $this->comments_on_off = ! $this->comments_on_off;
     }
