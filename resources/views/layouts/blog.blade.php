@@ -4,7 +4,7 @@
     <h1 class="text-center mt-5 mb-4">
         {{ $blog->title }}
         @if(Auth::user()->can('add_posts') && Auth::user()->id == $blog->user_id)
-            <a class="material-icons" href="/{{ $blog->title }}/posts/create" title="New Post">note_add</a>
+            <a class="material-icons" href="/{{ $blog->name }}/posts/create" title="New Post">note_add</a>
         @endif
     </h1>
     <div class="row">

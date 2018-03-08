@@ -66,5 +66,6 @@
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/textExpander.js') }}"></script>
   <script src="{{ asset('js/categoryPosts.js') }}"></script>
+  @yield('script')
 </body>
 </html>

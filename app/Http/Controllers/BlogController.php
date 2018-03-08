@@ -43,17 +43,18 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
+        $this->validate($request, [
             'user_id' => 'required',
             'title' => 'required',
+            'name' => 'required',
         ]);
-        $blog = Blog::create([
-            'user_id' => request('user_id'),
-            'title' => request('title'),
-        ]);
+        $blog = Blog::create($request->only('user_id', 'title', 'name'));
+
         $user = User::findOrFail(request('user_id'));
         $user->revokePermissionTo('add_blogs');
-        return redirect('/' . $blog->title);
+
+        $keyName = $blog->getRouteKeyName();
+        return redirect('/' . $blog->$keyName);
     }
 
     /**
@@ -90,11 +91,10 @@ class BlogController extends Controller
         $this->validate(request(), [
             'user_id' => 'required',
             'title' => 'required',
+            'name' => 'required',
         ]);
-        $blog->update([
-            'user_id' => request('user_id'),
-            'title' => request('title'),
-        ]);
+        $blog->update($request->only('user_id', 'title', 'name'));
+
         return $this->show($blog);
     }
 
