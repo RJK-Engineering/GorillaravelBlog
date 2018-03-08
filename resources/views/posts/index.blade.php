@@ -18,15 +18,23 @@
 @section('blog_posts')
   @foreach ($posts as $post)
     <article @if ($post->post_thumbnail) class="clearfix" @endif>
-      <h2>
-        <a href="/{{ $blog->title }}/posts/{{ $post->id }}">
-          {{ $post->title }}
-        </a>
-      </h2>
-      @if ($post->post_thumbnail)
+      <div class="blog-post-title">
+        <h2>
+          <a href="/{{ $blog->title }}/posts/{{ $post->id }}">
+            {{ $post->title }}
+          </a>
+        </h2>
+      </div>
+      <div class="blog-post-meta">
+        {{ $post->created_at->toFormattedDateString() }}
+        by {{ $post->blog()->user()->name }}
+      </div>
+      <div class="blog-post-body">
+        @if ($post->post_thumbnail)
           <img class="float-right mr-3" style="width: 25vw" src="/uploads/{{ $post->post_thumbnail }}">
-      @endif
-      <p>{!! $post->body !!}</p>
+        @endif
+        <p>{!! $post->body !!}</p>
+      </div>
     </article>
   @endforeach
 @endsection
