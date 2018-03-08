@@ -13,3 +13,6 @@ https://github.com/Jack-JP/Laravel-Vuejs-VueRouter
 
 ---
 why model-has-roles???
+---
+https://github.com/teamtnt/laravel-scout-tntsearch-driver
+php artisan scout:import App\Post

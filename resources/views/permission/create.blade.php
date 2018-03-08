@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="mt-5 mb-4">New Permission</h1>
 
-    <form method="post" action="/permissions" class="mb-3" >
+    <form class="mb-3" method="post" action="/permissions">
         {{ csrf_field() }}
 
         @include('layouts.errors')

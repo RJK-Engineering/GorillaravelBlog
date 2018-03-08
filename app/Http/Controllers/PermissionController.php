@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Permission;
+use App\User;
+
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -40,7 +42,7 @@ class PermissionController extends Controller
         $perm = Permission::create([ 'name' => request('name') ]);
 
         session()->flash('alert-success',
-            'Category added: ' . request('name'));
+            'Category added: ' . $perm->name);
         return redirect()->route('permissions.index');
     }
 
