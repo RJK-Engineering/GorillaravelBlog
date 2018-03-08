@@ -6,13 +6,6 @@
     <a class="material-icons" href="/permissions/create" title="New Permission">note_add</a>
   </h1>
 
-  <div class="alert-success">
-    {{ Session::get('alert-success') }}
-  </div>
-  <div class="alert-error">
-    {{ Session::get('alert-error') }}
-  </div>
-
   <table class="table">
   <tr>
     <th>Name</th>
