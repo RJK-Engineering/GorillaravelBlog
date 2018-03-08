@@ -23,12 +23,12 @@
       <td>{{ $blog->title }}</td>
       <td>{{ $blog->user()->name }}</td>
       <td>{{ $blog->user()->email }}</td>
-      @can('edit_blogs')
+      @if(Auth::user()->can('edit_blogs') && Auth::user()->id == $blog->user_id)
         <td>
           <a class="material-icons" href="/blogs/{{ $blog->title }}/edit">edit</a>
         </td>
       @endcan
-      @can('delete_blogs')
+      @if(Auth::user()->can('delete_blogs') && Auth::user()->id == $blog->user_id)
         <td>
           <form class="form-inline" action="/blogs/{{ $blog->title }}" method="POST">
             {{ csrf_field() }}
