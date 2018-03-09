@@ -52,7 +52,8 @@ class PostController extends Controller
         if ($blog->posts()->count() < config('app.max_free_posts')) {
             return view('posts.create', compact('blog'));
         } else {
-            return redirect(route('posts.index', $blog->title));
+            flash()->error('Maximum post count reached');
+            return redirect(route('posts.index', $blog->name));
         }
     }
 
@@ -96,7 +97,7 @@ class PostController extends Controller
         $this->_sendNewPostMail($post);
 
         flash('Succesfully created post ' . $post->title);
-        return redirect('/' . $blog->title);
+        return redirect('/' . $blog->name);
     }
 
     private function _sendNewPostMail(Post $post)
