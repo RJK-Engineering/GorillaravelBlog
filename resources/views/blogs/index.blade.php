@@ -41,4 +41,10 @@
     </tr>
   @endforeach
   </table>
+
+  <a href="/{{ $blog->name }}/posts/create" title="New Post">
+  <span class="material-icons">note_add</span>
+  Create new blog
+  </a>
+
 @endsection
