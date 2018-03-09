@@ -123,7 +123,11 @@ class BlogController extends Controller
 
         $blog = Blog::find(request('blog_id'));
         $user = User::find(request('user_id'));
-        $blog->toggleSubscription($user);
+        if ($blog->toggleSubscription($user)) {
+            flash('Succesfully subscribed to ' . $blog->title);
+        } else {
+            flash('Succesfully unsubscribed to ' . $blog->title);
+        }
 
         return back();
     }

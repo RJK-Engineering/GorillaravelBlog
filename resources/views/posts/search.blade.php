@@ -1,4 +1,4 @@
-<form class="mr-3" action="/{{ $blog->title }}/posts/search" method="get">
+<form class="mr-3" action="/{{ $blog->name }}/posts/search" method="get">
     <div class="form-group">
       <label class="sr-only" for="search-box">Search this blog</label>
       <input type="hidden" id="blog" name="blog" value="{{ $blog->id }}">

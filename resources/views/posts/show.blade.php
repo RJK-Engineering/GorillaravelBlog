@@ -6,7 +6,7 @@
       <h1>
           @if(Auth::user())
              @if(Auth::user()->can('edit_posts') && Auth::user()->id == $blog->user_id)
-                <a class="material-icons" href="/{{ $blog->title }}/posts/{{ $post->id }}/edit">edit</a>
+                <a class="material-icons" href="/{{ $blog->name }}/posts/{{ $post->id }}/edit">edit</a>
             @endif
           @endif
           {{ $post->title }}

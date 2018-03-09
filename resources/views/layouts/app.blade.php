@@ -50,8 +50,8 @@
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                   </form>
-                  <a class="dropdown-item" href="{{ route('posts.index', auth()->user()->blogs()->first()->title) }}">Visit blog</a>
-                  <a class="dropdown-item" href="/{{ auth()->user()->blogs()->first()->title }}/posts/create">New post</a>
+                  <a class="dropdown-item" href="{{ route('posts.index', auth()->user()->blogs()->first()->name) }}">Visit blog</a>
+                  <a class="dropdown-item" href="/{{ auth()->user()->blogs()->first()->name }}/posts/create">New post</a>
                 </div>
               </li>
             @endguest

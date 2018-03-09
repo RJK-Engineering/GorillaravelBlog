@@ -25,14 +25,14 @@
       @if(Auth::user())
           @if(Auth::user()->can('edit_blogs') && Auth::user()->id == $blog->user_id)
             <td>
-              <a class="material-icons" href="/blogs/{{ $blog->title }}/edit">edit</a>
+              <a class="material-icons" href="/blogs/{{ $blog->name }}/edit">edit</a>
             </td>
           @endif
       @endif
       @if(Auth::user())
           @if(Auth::user()->can('delete_blogs') && Auth::user()->id == $blog->user_id)
             <td>
-              <form class="form-inline" action="/blogs/{{ $blog->title }}" method="POST">
+              <form class="form-inline" action="/blogs/{{ $blog->name }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <input class="material-icons"

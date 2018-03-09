@@ -1,4 +1,4 @@
 
   @foreach ($categories as $category)
-    <a href="/{{ $blog->title }}/{{ $category->id }}/posts" class="nav-link category-link">{{ $category->title }}</a>
+    <a href="/{{ $blog->name }}/{{ $category->id }}/posts" class="nav-link category-link">{{ $category->title }}</a>
   @endforeach

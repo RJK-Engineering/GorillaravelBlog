@@ -6,7 +6,7 @@
 <body>
     <h1>New Post</h1>
     <p>
-        <a href="{{ config()->get('app.url') . '/' . $post->title }}">Read it!</a>
+        <a href="{{ config()->get('app.url') . '/posts/' . $post->id }}">Read now!</a>
     </p>
 
 </body>

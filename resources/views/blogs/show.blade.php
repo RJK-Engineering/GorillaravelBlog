@@ -20,7 +20,7 @@
     <article @if ($post->post_thumbnail) class="clearfix" @endif>
       <div class="blog-post-title">
         <h2>
-          <a href="/{{ $blog->title }}/posts/{{ $post->id }}">
+          <a href="/{{ $blog->name }}/posts/{{ $post->id }}">
             {{ $post->title }}
           </a>
         </h2>
