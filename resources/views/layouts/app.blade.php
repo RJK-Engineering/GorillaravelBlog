@@ -57,7 +57,7 @@
                       <a class="dropdown-item" href="{{ route('posts.index', auth()->user()->blogs()->first()->title) }}">Visit blog</a>
                   @endif
                   @if (auth()->user()->blogs()->first())
-                      <a class="dropdown-item" href="/{{ auth()->user()->blogs()->first()->title }}/posts/create">New post</a>
+                      <a class="dropdown-item" href="/{{ auth()->user()->blogs()->first()->name }}/posts/create">New post</a>
                   @endif
                 </div>
               </li>
