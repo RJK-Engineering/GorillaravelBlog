@@ -13,6 +13,7 @@ use App\Post;
 use App\Mail\NewPostMail;
 use Image;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CheckIdBlogs;
 use App\Http\Requests\CheckIdPosts;
 
 class PostController extends Controller
@@ -22,12 +23,13 @@ class PostController extends Controller
         $this->middleware(['permission:add_posts'], ['only' => ['create', 'store']]);
     }
 
-    public function index() {
+    public function index(Blog $blog) {
         $posts = Post::orderBy('created_at', 'desc')
             ->filter(request(['month', 'year']))
+            ->where('blog_id', $blog->id)
             ->get();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('blog','posts'));
     }
 
     public function latest($limit = 10)
@@ -45,12 +47,12 @@ class PostController extends Controller
         return view('posts.show', compact('blog', 'post', 'comments'));
     }
 
-    public function create(Blog $blog, CheckIdPosts $request)
+    public function create(Blog $blog, CheckIdBlogs $request)
     {
         if ($blog->posts()->count() < config('app.max_free_posts')) {
             return view('posts.create', compact('blog'));
         } else {
-            return view('pay.index', compact('blog'));
+            return redirect(route('posts.index', $blog->title));
         }
     }
 
@@ -158,5 +160,6 @@ class PostController extends Controller
     public function json(Blog $blog) {
         return $blog->posts()->orderBy('id', 'desc')->get();
     }
+
 
 }
