@@ -31,7 +31,7 @@
         <hr>
 
 
-        <input type="submit" value="Save post" class="btn"></input>
+        <input type="submit" value="Save post" class="btn btn-secondary"></input>
 
     </form>
 

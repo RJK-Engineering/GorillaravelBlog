@@ -1,13 +1,16 @@
 @extends ('layouts.blog')
 
 @section('blog_posts')
+    @include('layouts.errors')
     <article>
-      <h2>
+      <h1>
+          @if(Auth::user())
+             @if(Auth::user()->can('edit_posts') && Auth::user()->id == $blog->user_id)
+                <a class="material-icons" href="/{{ $blog->title }}/posts/{{ $post->id }}/edit">edit</a>
+            @endif
+          @endif
           {{ $post->title }}
-          @if(Auth::user()->can('edit_posts') && Auth::user()->id == $blog->user_id)
-            <a class="material-icons" href="/{{ $blog->title }}/posts/{{ $post->id }}/edit">edit</a>
-          @endcan
-      </h2>
+      </h1>
       @if ($post->post_thumbnail)
           <img class="float-right mr-3" style="width: 25vw" src="/uploads/{{ $post->post_thumbnail }}">
       @endif

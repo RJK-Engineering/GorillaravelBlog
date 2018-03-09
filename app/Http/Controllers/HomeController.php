@@ -26,5 +26,14 @@ class HomeController extends Controller
 
         return view('posts.index', compact('blog', 'posts'));
     }
+    public function overview() {
+        $posts = Post::limit(4)->orderBy('id', 'desc')->get();
+        $blogs = collect();
+        foreach($posts as $post){
+            $blogs->push(Blog::find($post->blog_id));
+        }
+
+        return view('home.overview', compact('posts', 'blogs'));
+    }
 
 }

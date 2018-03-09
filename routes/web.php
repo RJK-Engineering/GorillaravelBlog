@@ -1,6 +1,6 @@
 <?php
 
-Route::view('/', 'home.welcome');
+Route::view('/welcome', 'home.welcome');
 
 Auth::routes();
 
@@ -32,6 +32,7 @@ Route::get('/{blog}/posts/create', 'PostController@create');
 Route::get('/{blog}/posts/edit', 'PostController@edit');
 
 Route::get('/{blog}', 'HomeController@posts');
+Route::get('/', 'HomeController@overview');
 Route::get('/{blog}/admin', 'Admin\PostController@index');
 Route::get('/{blog}/{post}', 'PostController@show');
 
