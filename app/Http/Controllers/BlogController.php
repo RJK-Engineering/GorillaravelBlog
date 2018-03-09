@@ -53,6 +53,8 @@ class BlogController extends Controller
         $user = User::findOrFail(request('user_id'));
         $user->revokePermissionTo('add_blogs');
 
+        flash('Succesfully created blog ' . $blog->title);
+
         $keyName = $blog->getRouteKeyName();
         return redirect('/' . $blog->$keyName);
     }
@@ -95,6 +97,7 @@ class BlogController extends Controller
         ]);
         $blog->update($request->only('user_id', 'title', 'name'));
 
+        flash('Succesfully updated blog ' . $blog->title);
         return $this->show($blog);
     }
 
@@ -107,6 +110,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog, CheckIdBlogs $request)
     {
         $blog->delete();
+        flash('Succesfully deleted blog ' . $blog->title);
         return $this->index();
     }
 

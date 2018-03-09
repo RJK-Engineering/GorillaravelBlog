@@ -93,6 +93,7 @@ class PostController extends Controller
 
         $this->_sendNewPostMail($post);
 
+        flash('Succesfully created post ' . $post->title);
         return redirect('/' . $blog->title);
     }
 
@@ -129,12 +130,14 @@ class PostController extends Controller
             $post->categories()->sync($input['category']);
         }
 
+        flash('Succesfully updated post ' . $post->title);
         return redirect('/' . $blog->title . '/posts/' . $post->id);
     }
 
     public function destroy(Post $post, CheckIdPosts $request)
     {
         $post->delete();
+        flash('Succesfully deleted post ' . $post->title);
         return back();
     }
 

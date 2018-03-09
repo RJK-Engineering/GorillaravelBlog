@@ -34,6 +34,21 @@ class CategoryController extends Controller
         category::create([
             'title' => request('title')
         ]);
-        return redirect('/posts/create');
+        flash('Succesfully created category ' . $category->title);
+        return $this->index();
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Blog  $blog
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        flash('Succesfully deleted category ' . $category->title);
+        return $this->index();
+    }
+
 }
