@@ -4,20 +4,19 @@ Route::view('/welcome', 'home.welcome');
 
 Auth::routes();
 
-Route::get('/admin/roles', 'RoleController@index');
-Route::get('/admin/permissions', 'PermissionController@index');
-
 Route::get('/posts/latest', 'PostController@latest');
 
 Route::post('/blogs/subscribe', 'BlogController@toggleSubscription')->name('toggleSubscription');
 
 // Route::group(['middleware' => ['permission:publish articles|edit articles']], function () {
+Route::put('/users/updatePermissions', 'UserController@updatePermissions')->name('users.updatePermissions');
 Route::middleware(['auth'])->group(function() {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('blogs', 'BlogController');
     Route::resource('permissions', 'PermissionController');
 });
+
 // Route::middleware(['permission:add_posts'])->group(function() {
 //     Route::get('blogs', 'BlogController@index');
 // });

@@ -8,17 +8,23 @@ use App\User, App\Role, App\Permission;
 
 class UserController extends Controller
 {
-    public function index() {
-        $result = User::latest()->paginate();
-        return view('user.index', compact('result'));
+    public function index()
+    {
+        // $result = User::latest()->paginate();
+        // return view('user.index', compact('result'));
+        $permissions = Permission::orderBy('name', 'asc')->get();
+        $users = User::all();
+        return view('permission.users', compact('permissions', 'users'));
     }
 
-    public function create() {
+    public function create()
+    {
         $roles = Role::pluck('name', 'id');
         return view('user.new', compact('roles'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'name' => 'bail|required|min:2',
             'email' => 'required|email|unique:users',
@@ -40,7 +46,8 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $user = User::find($id);
         $roles = Role::pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
@@ -48,7 +55,8 @@ class UserController extends Controller
         return view('user.edit', compact('user', 'roles', 'permissions'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $this->validate($request, [
             'name' => 'bail|required|min:2',
             'email' => 'required|email|unique:users,email,' . $id,
@@ -74,7 +82,8 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         if ( Auth::user()->id == $id ) {
             flash()->warning('Deletion of currently logged in user is not allowed :(')->important();
             return redirect()->back();
@@ -89,7 +98,8 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    private function syncPermissions(Request $request, $user) {
+    private function syncPermissions(Request $request, $user)
+    {
         // Get the submitted roles
         $roles = $request->get('roles', []);
         $permissions = $request->get('permissions', []);
@@ -109,6 +119,15 @@ class UserController extends Controller
         $user->syncRoles($roles);
         return $user;
     }
+
+    public function updatePermissions(Request $request)
+    {
+        $id = array_keys($request->query())[0];
+        $user = User::find($id);
+        $this->syncPermissions($request, $user);
+        return back();
+    }
+
 }
 
 ?>

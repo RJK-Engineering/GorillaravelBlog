@@ -17,8 +17,7 @@
   @foreach ($blogs as $blog)
     <tr>
       <td>
-        <!-- <a href="/{{ $blog->name }}">{{ $blog->name }}</a> -->
-        <a href="/{{ $blog->title }}">TODO</a>
+        <a href="/{{ $blog->name }}">{{ $blog->name }}</a>
       </td>
       <td>{{ $blog->title }}</td>
       <td>{{ $blog->user()->name }}</td>
@@ -46,4 +45,10 @@
     </tr>
   @endforeach
   </table>
+
+  <a href="/{{ $blog->name }}/posts/create" title="New Post">
+  <span class="material-icons">note_add</span>
+  Create new blog
+  </a>
+
 @endsection

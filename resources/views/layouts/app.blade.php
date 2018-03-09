@@ -61,6 +61,7 @@
     </nav>
 
     <main class="container">
+      @include('flash::message')
       @yield('content')
     </main>
   </div>
@@ -68,5 +69,6 @@
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/textExpander.js') }}"></script>
   <script src="{{ asset('js/categoryPosts.js') }}"></script>
+  @yield('script')
 </body>
 </html>

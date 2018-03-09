@@ -27,6 +27,7 @@ class TextExpanderController extends Controller
             'snippet' => request('snippet'),
             'abbreviation' => request('abbreviation'),
         ]);
-        return redirect('/posts/create');
+        flash('Succesfully created snippet ' . $snippet->abbreviation);
+        return $this->index();
     }
 }

@@ -42,13 +42,15 @@ class CommentController extends Controller
         $blogger = Post::find($postId)->blogger();
         \Mail::to($blogger)->send($mail);
 
+        flash('Succesfully added comment');
         return back();
     }
 
 
-    public function destroy(Comment $comment, CheckIdComments $request) 
+    public function destroy(Comment $comment, CheckIdComments $request)
     {
         $comment->delete();
+        flash('Succesfully deleted comment');
         return back();
     }
 

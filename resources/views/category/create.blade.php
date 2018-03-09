@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
     <h1 class="mt-5 mb-4">New Category</h1>
-    <form class="form-inline" method="post" action="/categories" class="mb-5" >
 
+    <form class="mb-5" method="post" action="/categories">
         {{ csrf_field() }}
 
         <div class="form-group">
@@ -17,5 +16,4 @@
         class="material-icons ml-3" style="border: none; background:none; font-size: 36px">
         </input>
     </form>
-
 @endsection
