@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <div class="error">
-        @include('flash::message')
-    </div>
     <div class="jumbotron rounded-0 mb-0">
         <div class="container">
             <a class="text-dark" href="/">

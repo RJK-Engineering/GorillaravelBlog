@@ -13,14 +13,14 @@
         @foreach ($posts as $index => $post)
             <div class="card p-0 rounded-0 col-sm-12 col-md-6 col-lg-3 mb-2">
             @if ($post->post_thumbnail)
-                <a href="/{{ $blogs[$index]->title }}/posts/{{ $post->id }}">
+                <a href="/{{ $blogs[$index]->name }}/posts/{{ $post->id }}">
                     <img class="card-img-top" src="/uploads/{{ $post->post_thumbnail }}" alt="Card image cap">
                 </a>
             @endif
               <div class="card-body">
-              <h5 class="card-title"> {{ $post->title }}</h5>
+              <h5 class="card-title">{{ $post->title }}</h5>
               <p class="card-text" style="height: 10rem; overflow:hidden;">{{ $post->body }}</p>
-              <a href="/{{ $blogs[$index]->title }}/posts/{{ $post->id }}" class="btn btn-secondary">Read more</a>
+              <a href="/{{ $blogs[$index]->name }}/posts/{{ $post->id }}" class="btn btn-secondary">Read more</a>
             </div>
           </div>
         @endforeach

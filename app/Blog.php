@@ -6,7 +6,7 @@ class Blog extends Model
 {
     public function getRouteKeyName()
     {
-        return 'title';
+        return 'name';
     }
 
     public function posts()

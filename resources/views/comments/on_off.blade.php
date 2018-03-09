@@ -1,5 +1,5 @@
 @can('lock_comments')
-  <form class="form-inline" action="/{{ $blog->title }}/posts/{{ $post->id }}/toggleCommentStatus" method="POST">
+  <form class="form-inline" action="/{{ $blog->name }}/posts/{{ $post->id }}/toggleCommentStatus" method="POST">
     {{ csrf_field() }}
     @if(Auth::user()->can('lock_comments') && Auth::user()->id == $blog->user_id)
       <button class="btn text-dark ml-auto mr-auto mb-3" style="cursor: pointer">

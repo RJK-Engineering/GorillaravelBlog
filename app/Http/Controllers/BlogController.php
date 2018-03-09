@@ -43,17 +43,20 @@ class BlogController extends Controller
      */
     public function store(CheckIdBlogs $request)
     {
-        $this->validate(request(), [
+        $this->validate($request, [
             'user_id' => 'required',
             'title' => 'required',
+            'name' => 'required',
         ]);
-        $blog = Blog::create([
-            'user_id' => request('user_id'),
-            'title' => request('title'),
-        ]);
+        $blog = Blog::create($request->only('user_id', 'title', 'name'));
+
         $user = User::findOrFail(request('user_id'));
         $user->revokePermissionTo('add_blogs');
-        return redirect('/' . $blog->title);
+
+        flash('Succesfully created blog ' . $blog->title);
+
+        $keyName = $blog->getRouteKeyName();
+        return redirect('/' . $blog->$keyName);
     }
 
     /**
@@ -90,11 +93,11 @@ class BlogController extends Controller
         $this->validate(request(), [
             'user_id' => 'required',
             'title' => 'required',
+            'name' => 'required',
         ]);
-        $blog->update([
-            'user_id' => request('user_id'),
-            'title' => request('title'),
-        ]);
+        $blog->update($request->only('user_id', 'title', 'name'));
+
+        flash('Succesfully updated blog ' . $blog->title);
         return $this->show($blog);
     }
 
@@ -107,6 +110,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog, CheckIdBlogs $request)
     {
         $blog->delete();
+        flash('Succesfully deleted blog ' . $blog->title);
         return $this->index();
     }
 
@@ -119,7 +123,11 @@ class BlogController extends Controller
 
         $blog = Blog::find(request('blog_id'));
         $user = User::find(request('user_id'));
-        $blog->toggleSubscription($user);
+        if ($blog->toggleSubscription($user)) {
+            flash('Succesfully subscribed to ' . $blog->title);
+        } else {
+            flash('Succesfully unsubscribed to ' . $blog->title);
+        }
 
         return back();
     }
