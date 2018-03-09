@@ -50,7 +50,6 @@
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                   </form>
-<<<<<<< HEAD
                   @if (!auth()->user()->blogs()->first())
                       <a class="dropdown-item" href="{{ route('blogs.create') }}">Create blog</a>
                   @endif
@@ -60,10 +59,6 @@
                   @if (auth()->user()->blogs()->first())
                       <a class="dropdown-item" href="/{{ auth()->user()->blogs()->first()->title }}/posts/create">New post</a>
                   @endif
-=======
-                  <a class="dropdown-item" href="{{ route('posts.index', auth()->user()->blogs()->first()->name) }}">Visit blog</a>
-                  <a class="dropdown-item" href="/{{ auth()->user()->blogs()->first()->name }}/posts/create">New post</a>
->>>>>>> master
                 </div>
               </li>
             @endguest
