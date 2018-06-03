@@ -13,7 +13,9 @@ Add to httpd.conf: Include conf/httpd-gorillaravelblog.conf
 Add to hosts: 127.0.0.1 gorillaravelblog
 (c:\Windows\Sysnative\drivers\etc\hosts)
 
-Copy .env
+Copy and modify .env
+* set APP_URL
+* set DB_*
 
 Create gorillaravelblog schema in mysql
 Create gorillablog user in mysql, grant privileges on gorillaravelblog
